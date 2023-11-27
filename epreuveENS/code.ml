@@ -110,7 +110,7 @@ let plus_grand_coeff k m =
 ;;
 
 (** Renvoie le vecteur c decode **)
-let dec g =
+let decode g =
   let c = Array.make 7 0 in
   let g = ref g in
   for i = 6 downto 0 do
@@ -122,12 +122,12 @@ let dec g =
   c
 ;;
 (*
-let q3_a = dec (v7 1);;
-let q3_b = dec (v7 2);;
-let q3_c = dec (v7 3);;
-let q3_d = dec (v24 4);;
-let q3_e = dec (v24 5);;
-let q3_f = dec (v24 6);;
+let q3_a = decode (v7 1);;
+let q3_b = decode (v7 2);;
+let q3_c = decode (v7 3);;
+let q3_d = decode (v24 4);;
+let q3_e = decode (v24 5);;
+let q3_f = decode (v24 6);;
 *)
 
 (** On prend un nombre de godel en entree et on renvoie le nombre de pierre et le vecteur c**)
@@ -140,7 +140,7 @@ let extractNombreGodel epsilon =
 (** Cette fonction renvoie la configuration associee a un certain nombre de godel g**)
 let godelVersConfig g =
   let nb_pierre, enc_c = extractNombreGodel g in
-  let c = dec enc_c in
+  let c = decode enc_c in
   let nb_pierre_placee = ref c.(0) in
   let a = Array.make 8 0 in
   a.(0) <- c.(0);
@@ -333,3 +333,11 @@ let question8 () =
   retourne c3;
   Printf.printf "Question 8 :\n1) %d\n2) %d\n3) %d\n" (godel c1) (godel c2) (godel c3)
 ;;
+
+(*Cette fonction prend une configuration et un numero de puits et renvoie la liste des anticoups qui amenent a cette configuration en jouant le puit p*)
+(*on realise une boucle qui pour chaque puit i sauf le puit p, decremente le nombre de graine dans le puits i et en ajoute une dans le puit p, on sauvegarde la configuration et on itere sur le puits suivant (different de p). On s'arrete quand on peut pas decrementer ie le puits i est a 0*)
+let listeCoupsPrecedents (c : configuration) p =
+  failwith "A implementer"
+;;
+  
+

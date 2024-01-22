@@ -4,7 +4,7 @@
 #include "jeu.h"
 
 int main(void){
-  plateau* p1 = initialise(6);
-  affiche(p1);
+  plateau* p1 = lectureEntree_jeu("grilles/grille1.txt");
+  affiche_jeu(p1);
   return 0;
 }

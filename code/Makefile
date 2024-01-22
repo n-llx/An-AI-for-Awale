@@ -4,7 +4,7 @@
 CC = gcc
 
 # Options de compilation
-CFLAGS = -Wall -Wextra -std=c99
+CFLAGS = -Wall -Wextra -std=c11
 
 # Noms des fichiers source et objet
 SRC = main.c jeu.c

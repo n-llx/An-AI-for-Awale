@@ -7,9 +7,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 
 # Noms des fichiers source et objet
-SRC = main.c jeu.c
-OBJ = main.o jeu.o
-HEADER = jeu.h
+SRC = main.c jeu.c ia.c
+OBJ = $(SRC:.c=.o)
+HEADER = jeu.h ia.h
 
 # Nom de l'exécutable
 EXE = exe
@@ -22,8 +22,8 @@ $(EXE): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $(OBJ)
 
 # Règle pour les fichiers objets
-$(OBJ): $(SRC) $(HEADER)
-	$(CC) $(CFLAGS) -c $*.c
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Nettoyer les fichiers objets et l'exécutable
 clean:

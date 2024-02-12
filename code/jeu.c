@@ -2,7 +2,7 @@
 
 plateau* initialise_jeu(int tailleRangee){
   /*
-    * initialise(10) renvoie un tableau a une dimension de cette forme
+    * initialise(5) renvoie un tableau a une dimension de cette forme
     * 9	8 7 6 5
     * 0 1 2 3 4
     * */
@@ -44,12 +44,17 @@ int semer(plateau* p, int puit){
   assert(puit < tailleTab);
   int nb_pierre_a_semer = p->pierres[puit];
   p->pierres[puit] = 0;
-  int i = (puit + 1)%tailleTab;
+  int i = (puit + 1)%tailleTab; // On commence a partir du puit i
+  int nbTours = nb_pierre_a_semer / (2*p->tailleRangee - 1); // On determine le nombre de pierres que toutes les cases vont avoir
+  nb_pierre_a_semer = nb_pierre_a_semer % (2*p->tailleRangee - 1);
+  if(nbTours > 0){ // On fait au moins un tour de plateau
+    for(int j = i; j != (i-1)%tailleTab; j = (j+1)%tailleTab){
+      p->pierres[j] = p->pierres[j] + nbTours;
+    } // Quand on finit on arrive sur la case i ie la case du puit initial
+  }
   for(; nb_pierre_a_semer > 0; i = (i+1)%tailleTab){
-    if(i != puit){
-      p->pierres[i] = p->pierres[i] + 1;
-      nb_pierre_a_semer--;
-    }
+    p->pierres[i] = p->pierres[i] + 1;
+    nb_pierre_a_semer--;
   }
   printf("On a seme les graines du puit %d\n", puit);
   return (i+tailleTab-1)%tailleTab;

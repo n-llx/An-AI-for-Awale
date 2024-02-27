@@ -2,9 +2,9 @@
 
 plateau* initialise_jeu(int tailleRangee){
   /*
-    * initialise(5) renvoie un tableau a une dimension de cette forme
-    * 9	8 7 6 5
-    * 0 1 2 3 4
+    * initialise(6) renvoie un tableau a une dimension de cette forme
+    * 11 10 9 8 7 6
+    * 0  1  2 3 4 5
     * */
   plateau* res = malloc(sizeof(plateau));
   res->tailleRangee = tailleRangee;
@@ -16,18 +16,21 @@ plateau* initialise_jeu(int tailleRangee){
   return res;
 }
 
+int nb_total_pierres(plateau* p){
+  return p->tailleRangee * 2 * 4;
+}
+
 void affiche_jeu(plateau* p){
   // Permet d'afficher le plateau en 2 rangees distinctes
-  printf("--------------------\n");
   for(int i = 0; i < p->tailleRangee; i++){
-    printf("%d ", p->pierres[2 * p->tailleRangee - i - 1]);
+    printf(" %d |", p->pierres[2 * p->tailleRangee - i - 1]);
   }
   printf("\n");
   for(int i = 0; i < p->tailleRangee; i++){
-    printf("%d ", p->pierres[i]);
+    printf(" %d |", p->pierres[i]);
   }
   printf("\n");
-  printf("--------------------\n");
+  printf("--------------------------------------------------");
 }
 
 void distribueInitial(plateau* p, int* distribution_pierres, int n){
@@ -56,7 +59,6 @@ int semer(plateau* p, int puit){
     p->pierres[i] = p->pierres[i] + 1;
     nb_pierre_a_semer--;
   }
-  printf("On a seme les graines du puit %d\n", puit);
   return (i+tailleTab-1)%tailleTab;
 }
 
@@ -92,4 +94,9 @@ plateau* lectureEntree_jeu(const char* nomFichier){
   plateau* res = initialise_jeu(nbPuitsRangee);
   res->pierres = pierres;
   return res;
+}
+
+void liberer(plateau* p){
+  free(p->pierres);
+  free(p);
 }

@@ -132,7 +132,7 @@ int jouer_coup(position* p, int puit){
      graines_gagnees = recolte(p->plateau, puit_arrive);
    }
  }
-  printf("[<jouer_coup>] > Le joueur %d a joue le puit %d et a remporte %d pierres\n", p->joueur, puit, graines_gagnees);
+  //printf("[<jouer_coup>] > Le joueur %d a joue le puit %d et a remporte %d pierres\n", p->joueur, puit, graines_gagnees);
   if(graines_gagnees > 0){
     if(p->joueur == 1){p->nb_pierres_j1 += graines_gagnees;}
     if(p->joueur == 2){p->nb_pierres_j2 += graines_gagnees;}
@@ -145,15 +145,16 @@ void afficher_position(position* p){
   // Entree : une position 
   // Sortie : Affichage sur la sortie du plateau, du score et du joueur
   // auquel c'est de jouer
+  int* t = p->plateau->pierres;
   printf("\n");
+  printf("\033[38;5;8m       11   10    9    8    7    6\n\033[0m");
   printf("┌────┬────┬────┬────┬────┬────┬────┬────┐\n");
-  printf("│    │ %2d │ %2d │ %2d │ %2d │ %2d │ %2d │    │\n",0,11,4,5,6,7);
-  printf("│ %2d ├────┼────┼────┼────┼────┼────┤ %2d │\n", 25, 3);
-  affiche_jeu(p->plateau);
-  printf("\n");
-  printf("Nombre de pierres joueur 1 : %d\nNombre de pierres joueur 2 : %d\n",p->nb_pierres_j1, p->nb_pierres_j2);
-  printf("C'est au joueur %d de jouer !\n", p->joueur);
-  printf("##############################################\n");
+  printf("│    │ %2d │ %2d │ %2d │ %2d │ %2d │ %2d │    │\n",t[11],t[10],t[9],t[8],t[7],t[6]);
+  printf("│ %2d ├────┼────┼────┼────┼────┼────┤ %2d │\n", p->nb_pierres_j1, p->nb_pierres_j2);
+  printf("│    │ %2d │ %2d │ %2d │ %2d │ %2d │ %2d │    │\n",t[0],t[1],t[2],t[3],t[4],t[5]);
+  printf("└────┴────┴────┴────┴────┴────┴────┴────┘\n");
+  printf("\033[38;5;8m        0    1    2    3    4    5\n\033[0m");
+ printf("C'est au joueur %d de jouer !\n", p->joueur);
   printf("\n");
 }
 
@@ -218,15 +219,96 @@ int gagnant(position* pos){
   }
 }
 
+int heuristique_naive(position* pos){
+  // Entree : une position
+  // Sortie : la valeur de l'heuristique pour le joueur 1
+  return pos->nb_pierres_j1 - pos->nb_pierres_j2;
+}
+
+int indice_min_tab(int* tab, int taille){
+  int i_min = -1;
+  int min = 100000000;
+  for(int i = 0; i < taille; i++){
+    if(tab[i] < min){
+      min = tab[i];
+      i_min = i;
+    }
+  }
+  return i_min;
+}
+
+int indice_max_tab(int* tab, int taille){
+  int i_max = -1;
+  int max = -100000000;
+  for(int i = 0; i < taille; i++){
+    if(tab[i] > max){
+      max = tab[i];
+      i_max = i;
+    }
+  }
+  return i_max;
+}
+int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
+  // Entree : une position pos, une heuristique et une profondeur d
+  // Sortie : Le meilleur coup a jouer en evaluant l'arbre a une profondeur
+  // d en utilisant l'heuristique
+  if(terminale(pos)){
+    if(gagnant(pos) == 1){
+      return 100;
+    }else if(gagnant(pos) == 2){
+      return -100;
+    }else{
+      return 0;
+    }
+  }else if(d == 0){
+    return heuristique(pos);
+  }else{
+    // On creer un tableau de taille 6 ou les cases 
+    // correspondent au meilleur score puis on maximise ou minimise
+    int score_coup[6] = {0,0,0,0,0,0};
+    int si_puit_j2 = 0;
+    if(pos->joueur == 2){si_puit_j2 = 6;}
+    for(int i = 0; i < 6; i++){
+      if(puit_jouable(pos, si_puit_j2 + i)){
+        position* copie = copie_pos(pos);
+        jouer_coup(copie, si_puit_j2 + i);
+        score_coup[i] = min_max_heuristique(copie, heuristique, d-1);
+        liberer_position(copie);
+      }else{
+        if(pos->joueur == 1){score_coup[i] = -1;}else{score_coup[i] = 1;}
+      }
+    }
+    if(pos->joueur == 1){
+      int foo = indice_max_tab(score_coup, 6) + si_puit_j2;
+      return foo;
+    }else if(pos->joueur == 2){
+      int foo = indice_min_tab(score_coup, 6) + si_puit_j2;
+      return foo;
+    }else{
+      printf("Erreur dans <min_max_heuristique>\n");
+      return -1;
+    }
+  }
+}
+
+int strategie_min_max_h1(position* pos){
+  int coup = min_max_heuristique(pos, heuristique_naive, 1);
+  return coup;
+}
+
 int jouer_partie(position* pos, int (*strat1)(position*), int (*strat2)(position*), bool afficher){
    // Entree : deux strategies pour le joueur 1 et le joueur 2
    // Sortie : On affiche le déroulé de la partie et on renvoie le joueur gagnant
    int compteur = 0;
     while(!terminale(pos) && compteur <= 1000){
        if(pos->joueur == 1){
-            jouer_coup(pos, strat1(pos));
+            int coup = strat1(pos);
+            jouer_coup(pos, coup);
+            printf("<jouer_partie> : Le joueur 1 a joue %d\n", coup);
         }else if(pos->joueur == 2){
-            jouer_coup(pos, strat2(pos));
+          int coup = strat2(pos);
+          jouer_coup(pos, coup);
+          printf("<jouer_partie> : Le joueur 2 a joue %d\n", coup);
         }
         else{assert(false);}
         if(afficher){

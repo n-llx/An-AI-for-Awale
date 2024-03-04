@@ -6,9 +6,12 @@
 
 #include "jeu.h"
 #include "ia.h"
-#include "partie.h"
 
 int main(void){
-  jouer_partie(strategie_hasard, strategie_hasard, true);
+  srand(time(NULL));
+  plateau* plat = lectureEntree_jeu("grilles/grille0.txt");
+  position* pos = initialiser_position(plat, 1);
+  afficher_position(pos);
+  jouer_partie(pos, strategie_joueur, strategie_hasard, true);
   return 0;
 }

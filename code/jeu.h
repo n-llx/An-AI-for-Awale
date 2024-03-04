@@ -19,5 +19,5 @@ void distribueInitial(plateau* p, int* distribution_pierre, int n);
 int semer(plateau* p, int puit);
 int recolte(plateau* p, int puit);
 plateau* lectureEntree_jeu(const char* nomFichier);
-void liberer(plateau* p);
+void liberer_plateau(plateau* p);
 #endif // JEU_H_

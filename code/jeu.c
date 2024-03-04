@@ -67,11 +67,15 @@ int recolte(plateau* p, int puit){
   int somme = 0;
   int puit_regarde = puit;
   // La condition dans la boucle teste si on est au dernier puit d'une rangee
-  while(((puit_regarde != (p->tailleRangee - 1)) && (puit_regarde != -1)) && (p->pierres[puit_regarde] == 2 || p->pierres[puit_regarde] == 3)){
+  do {
+    if(p->pierres[puit_regarde] == 2 || p->pierres[puit_regarde] == 3){
     somme += p->pierres[puit_regarde];
     p->pierres[puit_regarde] = 0;
     puit_regarde--;
-  }
+    }else{
+      break;
+    }
+  }while(((puit_regarde != (p->tailleRangee - 1)) && (puit_regarde != -1)));
   return somme;
 }
 
@@ -96,7 +100,7 @@ plateau* lectureEntree_jeu(const char* nomFichier){
   return res;
 }
 
-void liberer(plateau* p){
+void liberer_plateau(plateau* p){
   free(p->pierres);
   free(p);
 }

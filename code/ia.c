@@ -150,7 +150,7 @@ void afficher_position(position* p){
   printf("\033[38;5;8m       11   10    9    8    7    6\n\033[0m");
   printf("┌────┬────┬────┬────┬────┬────┬────┬────┐\n");
   printf("│    │ %2d │ %2d │ %2d │ %2d │ %2d │ %2d │    │\n",t[11],t[10],t[9],t[8],t[7],t[6]);
-  printf("│ %2d ├────┼────┼────┼────┼────┼────┤ %2d │\n", p->nb_pierres_j1, p->nb_pierres_j2);
+  printf("│ %2d ├────┼────┼────┼────┼────┼────┤ %2d │\n", p->nb_pierres_j2, p->nb_pierres_j1);
   printf("│    │ %2d │ %2d │ %2d │ %2d │ %2d │ %2d │    │\n",t[0],t[1],t[2],t[3],t[4],t[5]);
   printf("└────┴────┴────┴────┴────┴────┴────┴────┘\n");
   printf("\033[38;5;8m        0    1    2    3    4    5\n\033[0m");
@@ -292,7 +292,7 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
 }
 
 int strategie_min_max_h1(position* pos){
-  int coup = min_max_heuristique(pos, heuristique_naive, 1);
+  int coup = min_max_heuristique(pos, heuristique_naive, 2);
   return coup;
 }
 

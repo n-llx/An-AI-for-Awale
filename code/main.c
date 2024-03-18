@@ -12,6 +12,6 @@ int main(void){
   plateau* plat = lectureEntree_jeu("grilles/grille0.txt");
   position* pos = initialiser_position(plat, 1);
   afficher_position(pos);
-  jouer_partie(pos, strategie_min_max_h1, strategie_hasard, true);
+  jouer_partie(pos, strategie_min_max_h1, strategie_joueur, true);
   return 0;
 }

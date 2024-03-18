@@ -42,23 +42,19 @@ void distribueInitial(plateau* p, int* distribution_pierres, int n){
 }
 
 int semer(plateau* p, int puit){
-  // Seme les graines du puit p et renvoie le puit sur lequel on s'est arrete
+  // Entree : Un plateau et un puit depuis lequel semer
+  // Sortie : Le puit ou on a seme la derniere piere
   int tailleTab = p->tailleRangee * 2;
   assert(puit < tailleTab);
-  int nb_pierre_a_semer = p->pierres[puit];
-  p->pierres[puit] = 0;
-  int i = (puit + 1)%tailleTab; // On commence a partir du puit i
-  int nbTours = nb_pierre_a_semer / (2*p->tailleRangee - 1); // On determine le nombre de pierres que toutes les cases vont avoir
-  nb_pierre_a_semer = nb_pierre_a_semer % (2*p->tailleRangee - 1);
-  if(nbTours > 0){ // On fait au moins un tour de plateau
-    for(int j = i; j != (i-1)%tailleTab; j = (j+1)%tailleTab){
-      p->pierres[j] = p->pierres[j] + nbTours;
-    } // Quand on finit on arrive sur la case i ie la case du puit initial
-  }
+  int nb_pierre_a_semer = p->pierres[puit]; // On prend les pierres du puit
+  p->pierres[puit] = 0; // Que l'on vide
+  int i = (puit + 1)%tailleTab; // On commence a partir du puit i + 1
   for(; nb_pierre_a_semer > 0; i = (i+1)%tailleTab){
-    p->pierres[i] = p->pierres[i] + 1;
-    nb_pierre_a_semer--;
-  }
+    if(i != puit){ // On ne seme pas dans le puit d'ou on a pris les pierres
+      p->pierres[i] = p->pierres[i] + 1;
+      nb_pierre_a_semer--;
+    }
+ }
   return (i+tailleTab-1)%tailleTab;
 }
 

@@ -60,8 +60,6 @@ bool puit_jouable(position* p, int puit){
   return false;
 }
 
-
-
 bool partie_jouable(position* pos){
   // Entree : une position
   // Sortie : Vrai si le joueur actuel peut nourrir son adversaire
@@ -78,8 +76,6 @@ bool partie_jouable(position* pos){
     }
     return false;
 }
-
-
 
 bool terminale(position* pos){
   // Entree : une position
@@ -158,7 +154,6 @@ void afficher_position(position* p){
   printf("\n");
 }
 
-
 int* indice_puits_non_vides(position* pos){
   // Entree : une position
   // Sortie : Un tableau ou la case 0 est la taille du tableau et
@@ -209,6 +204,9 @@ int strategie_joueur(position* pos){
 int gagnant(position* pos){
   // Entree : une position terminale
   // Sortie : 1 Si le joueur 1 gagne, 2 si c'est le joueur 2, 0 si nul
+  if(!terminale(pos)){ // Debug
+    afficher_position(pos); // Debug
+  } // Debug
   assert(terminale(pos));
   if(pos->nb_pierres_j1 > pos->nb_pierres_j2){
     return 1;
@@ -222,7 +220,14 @@ int gagnant(position* pos){
 int heuristique_naive(position* pos){
   // Entree : une position
   // Sortie : la valeur de l'heuristique pour le joueur 1
-  return pos->nb_pierres_j1 - pos->nb_pierres_j2;
+  if(pos->joueur == 1){
+    return pos->nb_pierres_j1 - pos->nb_pierres_j2;
+  }else if(pos->joueur == 2){
+    return pos->nb_pierres_j2 - pos->nb_pierres_j1;
+  }else{
+    fprintf(stderr, "Erreur dans la fonction <heuristique_naive>\n");
+    return -1; 
+  }
 }
 
 int indice_min_tab(int* tab, int taille){
@@ -248,6 +253,7 @@ int indice_max_tab(int* tab, int taille){
   }
   return i_max;
 }
+
 int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
   // Entree : une position pos, une heuristique et une profondeur d
   // Sortie : Le meilleur coup a jouer en evaluant l'arbre a une profondeur
@@ -265,7 +271,11 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
   }else{
     // On creer un tableau de taille 6 ou les cases 
     // correspondent au meilleur score puis on maximise ou minimise
-    int score_coup[6] = {0,0,0,0,0,0};
+    int* score_coup = malloc(sizeof(int) * 6);
+    for(int i = 0; i < 6; i++){
+      score_coup[i] = 0;
+    }
+
     int si_puit_j2 = 0;
     if(pos->joueur == 2){si_puit_j2 = 6;}
     for(int i = 0; i < 6; i++){
@@ -292,7 +302,7 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
 }
 
 int strategie_min_max_h1(position* pos){
-  int coup = min_max_heuristique(pos, heuristique_naive, 2);
+  int coup = min_max_heuristique(pos, heuristique_naive, 1);
   return coup;
 }
 
@@ -303,12 +313,12 @@ int jouer_partie(position* pos, int (*strat1)(position*), int (*strat2)(position
     while(!terminale(pos) && compteur <= 1000){
        if(pos->joueur == 1){
             int coup = strat1(pos);
+            if(afficher){printf("Le joueur 1 vient de jouer le puit %d\n",coup);}
             jouer_coup(pos, coup);
-            printf("<jouer_partie> : Le joueur 1 a joue %d\n", coup);
         }else if(pos->joueur == 2){
           int coup = strat2(pos);
+          if(afficher){printf("Le joueur 2 vient de jouer le puit %d\n",coup);}
           jouer_coup(pos, coup);
-          printf("<jouer_partie> : Le joueur 2 a joue %d\n", coup);
         }
         else{assert(false);}
         if(afficher){
@@ -320,5 +330,54 @@ int jouer_partie(position* pos, int (*strat1)(position*), int (*strat2)(position
         }
         compteur++;
     }
-    return gagnant(pos);
+    if(compteur > 1000){
+      return 0;
+    }else{
+      return gagnant(pos);
+    }
 }
+
+int jouer_partie_debut(int (*strat1)(position*), int (*strat2)(position*), bool afficher){
+  plateau* plat = lectureEntree_jeu("grilles/grille0.txt");
+  position* pos = initialiser_position(plat, 1);
+  int gagnant = jouer_partie(pos, strat1, strat2, afficher);
+  liberer_position(pos);
+  return gagnant;
+}
+
+double* ratioVictoire(int (*strat1)(position*), int (*strat2)(position*), int nb_parties){
+  // Entree : Deux strategies et un nombre de partie a disputer
+  // Sorite : Un tableau de taille 3 ou la premiere case est le nb de parties
+  // gagnee avec la strategie 1 puis le nb de parties perdues et le nb de
+  // nulles
+  double* res = malloc(sizeof(double) * 3);
+  for(int i = 0; i < 3; i++){
+    res[i] = 0.;
+  }
+  for(int i = 0; i < nb_parties; i++){
+    plateau* plat = lectureEntree_jeu("grilles/grille0.txt");
+    position* pos = initialiser_position(plat, 1);
+    int joueur_gagnant = jouer_partie(pos, strat1, strat2, false);
+    if(joueur_gagnant == 1){
+      res[0] = res[0] + 1.;
+    }else if(joueur_gagnant == 2){
+      res[1] = res[1] + 1.;
+    }else if(joueur_gagnant == 0){
+      res[2] = res[2] + 1.;
+    }else{
+      fprintf(stderr, "Erreur dans la fonction <ratioVictoire>\n");
+      return NULL;
+    }
+  }
+  for(int i = 0; i < 3; i++){
+    res[i] = res[i] / (double)nb_parties;
+  }
+  return res;
+}
+
+void afficherRatio(double* ratio){
+  printf("Nombre de victoires de la strategie 1 : %f\n", ratio[0]);
+  printf("Nombre de defaites de la strategie 1 : %f\n", ratio[1]);
+  printf("Nombre de parties egalite : %f\n", ratio[2]);
+}
+

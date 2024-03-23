@@ -18,6 +18,8 @@ int strategie_hasard(position* pos);
 int strategie_joueur(position* pos);
 int gagnant(position* pos);
 int jouer_partie(position* pos, int (*strat1)(position*), int (*strat2)(position*), bool afficher);
+int jouer_partie_debut(int (*strat1)(position*), int (*strat2)(position*), bool afficher);
 int strategie_min_max_h1(position* pos);
-
+double* ratioVictoire(int (*strat1)(position*), int (*strat2)(position*), int nb_parties);
+void afficherRatio(double* ratio);
 #endif // IA_H_

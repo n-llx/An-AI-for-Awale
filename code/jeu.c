@@ -91,6 +91,7 @@ plateau* lectureEntree_jeu(const char* nomFichier){
   for(int i = 0; i < nbPuitsRangee; i++){
     fscanf(fichier, "%d", &pierres[i]);
   }
+  fclose(fichier);
   plateau* res = initialise_jeu(nbPuitsRangee);
   res->pierres = pierres;
   return res;

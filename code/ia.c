@@ -289,7 +289,7 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
       } //debug
       printf("Indice du meilleur coup %d\n", foo); //debug
       printf("\n"); //debug
-      return score_coup[foo];
+      return foo;
     }else if(pos->joueur == 2){
       int foo = indice_min_tab(score_coup, 6) + si_puit_j2;
       printf("Nous sommes a une profondeur %d\n", d); //debug
@@ -298,7 +298,7 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
       } //debug
       printf("\n"); //debug
       printf("Indice du meilleur coup %d\n", foo); //debug
-      return score_coup[foo];
+      return foo;
     }else{
       printf("Erreur dans <min_max_heuristique>\n");
       return -1;

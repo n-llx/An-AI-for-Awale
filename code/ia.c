@@ -287,8 +287,9 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
       for(int i = 0; i < 6; i++){ //debug
         printf("Score du coup %d=%d\n ", i+si_puit_j2, score_coup[i]); //debug
       } //debug
+      printf("Indice du meilleur coup %d\n", foo); //debug
       printf("\n"); //debug
-      return foo;
+      return score_coup[foo];
     }else if(pos->joueur == 2){
       int foo = indice_min_tab(score_coup, 6) + si_puit_j2;
       printf("Nous sommes a une profondeur %d\n", d); //debug
@@ -296,7 +297,8 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
         printf("Score du coup %d=%d\n ", i+si_puit_j2, score_coup[i]); //debug
       } //debug
       printf("\n"); //debug
-      return foo;
+      printf("Indice du meilleur coup %d\n", foo); //debug
+      return score_coup[foo];
     }else{
       printf("Erreur dans <min_max_heuristique>\n");
       return -1;
@@ -313,7 +315,7 @@ int jouer_partie(position* pos, int (*strat1)(position*), int (*strat2)(position
    // Entree : deux strategies pour le joueur 1 et le joueur 2
    // Sortie : On affiche le déroulé de la partie et on renvoie le joueur gagnant
    int compteur = 0;
-    while(!terminale(pos) && compteur <= 1000){
+    while(!terminale(pos) && compteur <= 2){ //Debug : mettre 1000
        if(pos->joueur == 1){
             int coup = strat1(pos);
             if(afficher){printf("Le joueur 1 vient de jouer le puit %d\n",coup);}

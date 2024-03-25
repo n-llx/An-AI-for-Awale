@@ -295,7 +295,7 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
 }
 
 int strategie_min_max_h1(position* pos){
-  int coup = min_max_heuristique(pos, heuristique_naive, 1);
+  int coup = min_max_heuristique(pos, heuristique_naive, 3);
   return coup;
 }
 
@@ -369,8 +369,8 @@ double* ratioVictoire(int (*strat1)(position*), int (*strat2)(position*), int nb
 }
 
 void afficherRatio(double* ratio){
-  printf("Nombre de victoires de la strategie 1 : %f\n", ratio[0]);
-  printf("Nombre de defaites de la strategie 1 : %f\n", ratio[1]);
-  printf("Nombre de parties egalite : %f\n", ratio[2]);
+  printf("Nombre de victoires de la strategie 1 : %.1f%%\n", ratio[0]*100);
+  printf("Nombre de defaites de la strategie 1 : %.1f%%\n", ratio[1]*100);
+  printf("Nombre de parties egalite : %.1f%%\n", ratio[2]*100);
 }
 

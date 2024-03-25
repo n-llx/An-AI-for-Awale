@@ -283,9 +283,19 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
     }
     if(pos->joueur == 1){
       int foo = indice_max_tab(score_coup, 6) + si_puit_j2;
+      printf("Nous sommes a une profondeur %d\n", d); //debug
+      for(int i = 0; i < 6; i++){ //debug
+        printf("Score du coup %d=%d\n ", i+si_puit_j2, score_coup[i]); //debug
+      } //debug
+      printf("\n"); //debug
       return foo;
     }else if(pos->joueur == 2){
       int foo = indice_min_tab(score_coup, 6) + si_puit_j2;
+      printf("Nous sommes a une profondeur %d\n", d); //debug
+      for(int i = 0; i < 6; i++){ //debug
+        printf("Score du coup %d=%d\n ", i+si_puit_j2, score_coup[i]); //debug
+      } //debug
+      printf("\n"); //debug
       return foo;
     }else{
       printf("Erreur dans <min_max_heuristique>\n");

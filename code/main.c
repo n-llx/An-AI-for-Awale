@@ -9,6 +9,6 @@
 
 int main(void){
   srand(time(NULL));
-  jouer_partie_debut(strategie_min_max_h1, strategie_hasard, true);
+  afficherRatio(ratioVictoire(strategie_hasard, strategie_min_max_h1, 100));
   return 0;
 }

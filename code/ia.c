@@ -220,14 +220,7 @@ int gagnant(position* pos){
 int heuristique_naive(position* pos){
   // Entree : une position
   // Sortie : la valeur de l'heuristique pour le joueur 1
-  if(pos->joueur == 1){
-    return pos->nb_pierres_j1 - pos->nb_pierres_j2;
-  }else if(pos->joueur == 2){
-    return pos->nb_pierres_j2 - pos->nb_pierres_j1;
-  }else{
-    fprintf(stderr, "Erreur dans la fonction <heuristique_naive>\n");
-    return -1; 
-  }
+  return pos->nb_pierres_j1 - pos->nb_pierres_j2;
 }
 
 int indice_min_tab(int* tab, int taille){

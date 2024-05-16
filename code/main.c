@@ -9,8 +9,7 @@
 
 int main(void){
   srand(time(NULL));
-  plateau* p = lectureEntree_jeu("grilles/grille1.txt");
-  position* pos = initialiser_position(p, 1);
-  jouer_partie(pos, strategie_min_max_h1, strategie_hasard, true);
+  jouer_tant_que_1_gagne(strategie_min_max_h1, strategie_hasard);
+//  afficherRatio(ratioVictoire(strategie_hasard,strategie_min_max_h1, 100));
   return 0;
 }

@@ -247,8 +247,10 @@ int indice_max_tab(int* tab, int taille){
   return i_max;
 }
 
-int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
-  // Entree : une position pos, une heuristique et une profondeur d
+
+int min_max_heuristique(position* pos, int (*heuristique)(position*), int d, int* coup){
+  // Entree : une position pos, une heuristique, une profondeur d et un pointeur
+  // vers l'indice du meilleur coup a jouer
   // Sortie : Le meilleur coup a jouer en evaluant l'arbre a une profondeur
   // d en utilisant l'heuristique
   if(terminale(pos)){
@@ -275,30 +277,36 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
       if(puit_jouable(pos, si_puit_j2 + i)){
         position* copie = copie_pos(pos);
         jouer_coup(copie, si_puit_j2 + i);
-        score_coup[i] = min_max_heuristique(copie, heuristique, d-1);
+        score_coup[i] = min_max_heuristique(copie, heuristique, d-1,coup);
         liberer_position(copie);
       }else{
-        if(pos->joueur == 1){score_coup[i] = -1;}else{score_coup[i] = 1;}
+        if(pos->joueur == 1){score_coup[i] = -1;}else{score_coup[i] = 999999999;}
       }
     }
     if(pos->joueur == 1){
       int foo = indice_max_tab(score_coup, 6) + si_puit_j2;
+      /*
       printf("Nous sommes a une profondeur %d\n", d); //debug
       for(int i = 0; i < 6; i++){ //debug
         printf("Score du coup %d=%d\n ", i+si_puit_j2, score_coup[i]); //debug
       } //debug
       printf("Indice du meilleur coup %d\n", foo); //debug
       printf("\n"); //debug
-      return foo;
+      */
+      *coup = foo;
+      return score_coup[foo-si_puit_j2];
     }else if(pos->joueur == 2){
       int foo = indice_min_tab(score_coup, 6) + si_puit_j2;
+      /*
       printf("Nous sommes a une profondeur %d\n", d); //debug
       for(int i = 0; i < 6; i++){ //debug
         printf("Score du coup %d=%d\n ", i+si_puit_j2, score_coup[i]); //debug
       } //debug
       printf("\n"); //debug
       printf("Indice du meilleur coup %d\n", foo); //debug
-      return foo;
+      */
+      *coup = foo;
+      return score_coup[foo-si_puit_j2];
     }else{
       printf("Erreur dans <min_max_heuristique>\n");
       return -1;
@@ -307,15 +315,18 @@ int min_max_heuristique(position* pos, int (*heuristique)(position*), int d){
 }
 
 int strategie_min_max_h1(position* pos){
-  int coup = min_max_heuristique(pos, heuristique_naive, 3);
-  return coup;
+  // Entree : une position
+  // Sortie : Le coup a jouer en utilisant l'algo min max
+  int* meilleur_coup = malloc(sizeof(int));
+  min_max_heuristique(pos, heuristique_naive, 5, meilleur_coup);
+  return *meilleur_coup;
 }
 
 int jouer_partie(position* pos, int (*strat1)(position*), int (*strat2)(position*), bool afficher){
    // Entree : deux strategies pour le joueur 1 et le joueur 2
    // Sortie : On affiche le déroulé de la partie et on renvoie le joueur gagnant
    int compteur = 0;
-    while(!terminale(pos) && compteur <= 2){ //Debug : mettre 1000
+    while(!terminale(pos) && compteur <= 1000){ //Debug : mettre 1000
        if(pos->joueur == 1){
             int coup = strat1(pos);
             if(afficher){printf("Le joueur 1 vient de jouer le puit %d\n",coup);}
@@ -348,6 +359,12 @@ int jouer_partie_debut(int (*strat1)(position*), int (*strat2)(position*), bool 
   int gagnant = jouer_partie(pos, strat1, strat2, afficher);
   liberer_position(pos);
   return gagnant;
+}
+
+void jouer_tant_que_1_gagne(int (*strat1)(position*), int (*strat2)(position*)){
+  while(jouer_partie_debut(strat1, strat2, true) == 1){
+    printf("DEBUG : NOUVELLE PARTIE \n \n");
+  }
 }
 
 double* ratioVictoire(int (*strat1)(position*), int (*strat2)(position*), int nb_parties){

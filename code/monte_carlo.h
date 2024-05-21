@@ -2,16 +2,17 @@
 #define MONTE_CARLO_H_ 
 
 #include "ia.h"
-#define CONTRAINTE 10000
+#define CONTRAINTE 50
 struct node {
+  int id;
   position* pos;
   int nb_visites;
-  double ratio_victoire;
+  int nb_victoires;
   struct node* parent;
   struct node* enfants[6];
 };
 typedef struct node node;
 
-void test(position* pos);
+int strategie_mcts(position* p);
 
 #endif // MONTE_CARLO_H_

@@ -9,10 +9,11 @@
 #include "monte_carlo.h"
 
 int main(void){
-  srand(time(NULL));
-  plateau* p = lectureEntree_jeu("grilles/grille1.txt");
-  position* pos = initialiser_position(p,1);
-  test(pos);
+  //  srand(time(NULL));
+  srand(6);
+  plateau* p = lectureEntree_jeu("grilles/grille2.txt");
+  position* pos = initialiser_position(p, 1);
+  int coup = strategie_mcts(pos);
   return 0;
 }
 

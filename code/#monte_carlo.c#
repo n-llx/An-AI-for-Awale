@@ -161,7 +161,6 @@ void affichage_arbre(node* arb){
 int strategie_mcts(position* p){
   int si_joueur_2 = 0;
   if(p->joueur == 2){si_joueur_2=6;}
-  printf("Ouf\n");
   node* racine = mcts(p);
   int meilleur_coup = -1;
   double max = -1.;

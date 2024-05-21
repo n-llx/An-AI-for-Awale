@@ -6,10 +6,13 @@
 
 #include "jeu.h"
 #include "ia.h"
+#include "monte_carlo.h"
 
 int main(void){
   srand(time(NULL));
-  jouer_tant_que_1_gagne(strategie_min_max_h1, strategie_hasard);
-//  afficherRatio(ratioVictoire(strategie_hasard,strategie_min_max_h1, 100));
+  plateau* p = lectureEntree_jeu("grilles/grille1.txt");
+  position* pos = initialiser_position(p,1);
+  test(pos);
   return 0;
 }
+

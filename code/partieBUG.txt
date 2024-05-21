@@ -371,7 +371,7 @@ Le joueur 2 vient de jouer le puit 6
 └────┴────┴────┴────┴────┴────┴────┴────┘
         0    1    2    3    4    5
 C'est au joueur 1 de jouer !
-
+PROBLEME $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 Le joueur 1 vient de jouer le puit 0
 
        11   10    9    8    7    6

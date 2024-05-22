@@ -2,7 +2,8 @@
 #define MONTE_CARLO_H_ 
 
 #include "ia.h"
-#define CONTRAINTE 50
+#include <time.h>
+#define CONTRAINTE 500
 struct node {
   int id;
   position* pos;

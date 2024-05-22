@@ -21,10 +21,12 @@ node* regle_arbre_aleatoire(node* tree){
   // Sortie : un noeud choisi au hasard dont il reste un coup a jouer
   for(int i = 0; i < 6; i++){
     int coup_aleatoire = coup_aleatoire_possible(tree->pos);
-    if(tree->enfants[coup_aleatoire] == NULL){
+    if(tree->enfants[coup_aleatoire] == NULL || coup_aleatoire == -1){
+      // Si on peut jouer un des coups ou si tree est terminal
       return tree;
     }else{
-      return regle_arbre_aleatoire(tree->enfants[coup_aleatoire]);
+      node* noeud_suivant = tree->enfants[coup_aleatoire];
+      return regle_arbre_aleatoire(noeud_suivant);
     }
   }
   assert(false);
@@ -62,7 +64,10 @@ node* developper(node* n){
   // Entree : un noeud n
   // Sortie : renvoie un noeud accessible depuis n par un coup ou NULL si
   // impossible
-  if(terminale(n->pos)){return NULL;}
+  if(terminale(n->pos)){
+    assert(false);
+    return NULL;
+  }
   int si_joueur_2 = 0;
   if(n->pos->joueur == 2){si_joueur_2 = 6;}
   int coup = renvoyer_hasard_coup_restant(n);
@@ -108,9 +113,13 @@ node* mcts(position* pos){
   // Sortie : Un arbre de Monte Carlo itere avec la CONTRAINTE
   node* racine = creer_noeud(pos);
   for(int i = 0; i < CONTRAINTE; i++){
+    assert(racine != NULL);
     node* a_explorer = regle_arbre_aleatoire(racine);
-    node* fils_a_explorer = developper(a_explorer);
-    if(fils_a_explorer != NULL){
+    if(terminale(a_explorer->pos)){
+      retropropagation(a_explorer, racine->pos->joueur); // On n'ajoute pas de noeud si la partie est terminale
+    }else{
+      node* fils_a_explorer = developper(a_explorer);
+      assert(fils_a_explorer != NULL);
       retropropagation(fils_a_explorer, racine->pos->joueur);
     }
   }
@@ -159,9 +168,9 @@ void affichage_arbre(node* arb){
 }
 
 int strategie_mcts(position* p){
+  clock_t start = clock();
   int si_joueur_2 = 0;
   if(p->joueur == 2){si_joueur_2=6;}
-  printf("Ouf\n");
   node* racine = mcts(p);
   int meilleur_coup = -1;
   double max = -1.;
@@ -174,6 +183,9 @@ int strategie_mcts(position* p){
       }
     }
   }
+  clock_t end = clock();
+  double cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+  printf("Le temps d'exécution de la strategie Monte-Carlo est de %f secondes\n", cpu_time_used);
   return meilleur_coup + si_joueur_2;
 }
 

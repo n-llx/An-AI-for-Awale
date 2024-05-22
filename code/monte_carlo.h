@@ -3,7 +3,7 @@
 
 #include "ia.h"
 #include <time.h>
-#define CONTRAINTE 500
+#define CONTRAINTE 40
 struct node {
   int id;
   position* pos;
@@ -15,5 +15,7 @@ struct node {
 typedef struct node node;
 
 int strategie_mcts(position* p);
+node* mcts(position* p);
+void affichage_arbre(node* arbre);
 
 #endif // MONTE_CARLO_H_

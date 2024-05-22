@@ -142,7 +142,7 @@ void parcours_en_profondeur(node* racine, FILE* f, int* numero_noeud) {
   }
   *numero_noeud = *numero_noeud + 1;
   racine->id = *numero_noeud;
-  fprintf(f, "%d [label=\"%d,%d\",fontcolor=webmaroon, color=grey%d];\n", racine->id, racine->nb_visites, racine->nb_victoires, couleur_gris(racine));
+  fprintf(f, "%d [label=\"%d,%d\",fontcolor=red, color=grey%d];\n", racine->id, racine->nb_visites, racine->nb_victoires, couleur_gris(racine));
   for (int i = 0; i < 6; i++) {
     parcours_en_profondeur(racine->enfants[i], f, numero_noeud);
     if(racine->enfants[i] != NULL){
@@ -158,17 +158,17 @@ void affichage_arbre(node* arb){
   // Sortie : Creation et affichage d'un fichier pour visualiser l'arbre
   const char* nom_fichier = "arbre.dot";
   FILE* f = fopen(nom_fichier, "w");
-  fprintf(f, "graph arbre {\n node [shape=circle,style=filled];\n");
+  fprintf(f, "graph arbre {\n node [shape=circle,style=filled,fontname=\"Helvetica\",fontsize=20];\nedge [fontname=\"Helvetica\"]\n;");
   int numero = -1;
   parcours_en_profondeur(arb, f, &numero);
   fprintf(f,"}\n");
   fclose(f);
-  system("dot -Tpng arbre.dot -o arbre.png");
-  system("xdg-open arbre.png");
+  system("dot -Tpdf arbre.dot -o arbre.pdf");
+  system("xdg-open arbre.pdf");
 }
 
 int strategie_mcts(position* p){
-  clock_t start = clock();
+  //  clock_t start = clock();
   int si_joueur_2 = 0;
   if(p->joueur == 2){si_joueur_2=6;}
   node* racine = mcts(p);
@@ -183,9 +183,9 @@ int strategie_mcts(position* p){
       }
     }
   }
-  clock_t end = clock();
-  double cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-  printf("Le temps d'exécution de la strategie Monte-Carlo est de %f secondes\n", cpu_time_used);
+  //  clock_t end = clock();
+  // double cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+  // printf("Le temps d'exécution de la strategie Monte-Carlo est de %f secondes\n", cpu_time_used);
   return meilleur_coup + si_joueur_2;
 }
 

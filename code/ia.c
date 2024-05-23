@@ -1,5 +1,13 @@
 #include "ia.h"
 
+position* creer_position_fichier(char* nom_fichier,int joueur, int nb_pierre_1, int nb_pierre_2){
+  plateau* p = lectureEntree_jeu(nom_fichier);
+  position* pos = initialiser_position(p, joueur);
+  pos->nb_pierres_j1 = nb_pierre_1;
+  pos->nb_pierres_j2 = nb_pierre_2;
+  return pos;
+}
+
 int nb_pierres_restantes_joueur(position* pos, int joueur){
   // Entree : Une position et un joueur j
   // Sortie : Renvoie le nombre de pierre dans les trous du joueur j
@@ -416,7 +424,8 @@ double* ratioVictoire(int (*strat1)(position*), int (*strat2)(position*), int nb
   return res;
 }
 
-void afficherRatio(double* ratio){
+void afficherRatio(int (*strat1)(position*), int (*strat2)(position*), int nb_parties){
+  double* ratio = ratioVictoire(strat1, strat2, nb_parties);
   printf("Nombre de victoires de la strategie 1 : %.1f%%\n", ratio[0]*100);
   printf("Nombre de defaites de la strategie 1 : %.1f%%\n", ratio[1]*100);
   printf("Nombre de parties egalite : %.1f%%\n", ratio[2]*100);

@@ -1,0 +1,17 @@
+#include "mcts.h"
+
+noeud* creer_noeud(position* pos){
+  // Entree : Une position ie un etat du jeu
+  // Sortie : Un noeud de l'arbre de recherche ayant un nb de visites et
+  // une valeur de Q = 0. avec des fils nuls
+  node* res = malloc(sizeof(node));
+  res->id = -1;
+  res->pos = pos;
+  res->nb_visites = 0;
+  res->nb_victoires = 0;
+  res->parent = NULL;
+  for(int i = 0; i < 6; i++){
+    res->enfants[i] = NULL;
+  }
+  return res;
+}

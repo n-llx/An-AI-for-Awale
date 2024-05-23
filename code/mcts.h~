@@ -1,0 +1,16 @@
+#ifndef MCTS_H_
+#define MCTS_H_
+
+#include "ia.h"
+
+struct noeud {
+  int id;
+  position* pos;
+  int nb_visites;
+  double Q;
+  struct noeud* parent;
+  struct noeud* enfants[6];
+};
+typedef struct noeud noeud;
+
+noeud* creer_noeud(position* pos);

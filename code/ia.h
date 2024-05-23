@@ -10,7 +10,7 @@ struct position {
 }; // Represente un sommet du graphe du jeu 
 typedef struct position position;
 
-
+position* creer_position_fichier(char* nom_fichier, int joueur, int nb_pierre_1, int nb_pierre_2);
 void liberer_position(position* p);
 position* copie_pos(position* pos);
 bool puit_jouable(position* p, int puit);
@@ -25,6 +25,5 @@ int jouer_coup(position* p, int puit);
 int jouer_partie(position* pos, int (*strat1)(position*), int (*strat2)(position*), bool afficher);
 int jouer_partie_debut(int (*strat1)(position*), int (*strat2)(position*), bool afficher);
 int strategie_min_max_h1(position* pos);
-double* ratioVictoire(int (*strat1)(position*), int (*strat2)(position*), int nb_parties);
-void afficherRatio(double* ratio);
+void afficherRatio(int (*strat1)(position*), int (*strat2)(position*), int nb_parties);
 #endif // IA_H_

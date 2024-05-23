@@ -4,12 +4,12 @@
 CC = gcc
 
 # Options de compilation
-CFLAGS = -Wall -Wextra -std=c11
+CFLAGS = -Wall -Wextra -std=c11 -lm
 
 # Noms des fichiers source et objet
-SRC = main.c jeu.c ia.c monte_carlo.c
+SRC = main.c jeu.c ia.c flat_mc.c mcts.c
 OBJ = $(SRC:.c=.o)
-HEADER = jeu.h ia.h monte_carlo.h
+HEADER = jeu.h ia.h flat_mc.h mcts.h
 
 # Nom de l'exécutable
 EXE = exe

@@ -12,7 +12,7 @@
 int main(void){
   srand(time(NULL));
   //  srand(0);
-  afficherRatio(strategie_mcts, strategie_hasard, 100);
+  afficherRatio(strategie_mcts, strategie_min_max_h1, 10);
 
   return 0;
 }

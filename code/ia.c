@@ -222,6 +222,7 @@ int strategie_hasard(position* pos){
   int taille = indice_puits[0];
   int rand_indice = (rand()%taille) + 1;
   int rand_puit = indice_puits[rand_indice];
+  free(indice_puits);
   return rand_puit;
 }
 
@@ -415,8 +416,10 @@ double* ratioVictoire(int (*strat1)(position*), int (*strat2)(position*), int nb
       res[2] = res[2] + 1.;
     }else{
       fprintf(stderr, "Erreur dans la fonction <ratioVictoire>\n");
+      liberer_position(pos);
       return NULL;
     }
+    liberer_position(pos);
   }
   for(int i = 0; i < 3; i++){
     res[i] = res[i] / (double)nb_parties;
@@ -428,6 +431,8 @@ void afficherRatio(int (*strat1)(position*), int (*strat2)(position*), int nb_pa
   double* ratio = ratioVictoire(strat1, strat2, nb_parties);
   printf("Nombre de victoires de la strategie 1 : %.1f%%\n", ratio[0]*100);
   printf("Nombre de defaites de la strategie 1 : %.1f%%\n", ratio[1]*100);
-  printf("Nombre de parties egalite : %.1f%%\n", ratio[2]*100);
+  printf("Nombre de parties egalites : %.1f%%\n", ratio[2]*100);
+  free(ratio);
 }
 
+ 

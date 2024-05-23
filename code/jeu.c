@@ -93,6 +93,7 @@ plateau* lectureEntree_jeu(const char* nomFichier){
   }
   fclose(fichier);
   plateau* res = initialise_jeu(nbPuitsRangee);
+  free(res->pierres);
   res->pierres = pierres;
   return res;
 }

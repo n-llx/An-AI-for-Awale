@@ -3,7 +3,7 @@
 
 #include "ia.h"
 #include <time.h>
-#define CONTRAINTE 40
+#define CONTRAINTE 500
 struct node {
   int id;
   position* pos;

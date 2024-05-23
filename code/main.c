@@ -10,9 +10,9 @@
 #include "mcts.h"
 
 int main(void){
-  //  srand(time(NULL));
-  srand(0);
-  test();
+  srand(time(NULL));
+  //  srand(0);
+  afficherRatio(strategie_mcts, strategie_hasard, 100);
 
   return 0;
 }

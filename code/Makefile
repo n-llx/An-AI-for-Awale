@@ -7,9 +7,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -lm -g -O0
 
 # Noms des fichiers source et objet
-SRC = main.c jeu.c ia.c flat_mc.c mcts.c
+SRC = main.c jeu.c ia.c flat_mc.c mcts.c retrograde.c
 OBJ = $(SRC:.c=.o)
-HEADER = jeu.h ia.h flat_mc.h mcts.h
+HEADER = jeu.h ia.h flat_mc.h mcts.hb retrograde.h
 
 # Nom de l'exécutable
 EXE = exe

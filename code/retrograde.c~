@@ -1,0 +1,59 @@
+#include "retrograde.h"
+
+unsigned a = 1103515245;
+unsigned c = 12345;
+unsigned m = 1 << 31;
+unsigned u0 = 42;
+
+unsigned u(unsigned n){
+  unsigned res = u0;
+  for(unsigned i = 0; i < n; i++){
+    res = (a * res + c) % m;
+  }
+  return res;
+}
+
+double v7(unsigned n){
+  return ((3432 * u(n)) / (double)m);
+}
+/*
+  unsigned w7(unsigned n){
+  return 7 + 25 * v7(n);
+}
+*/
+unsigned v24(unsigned n){
+  return (unsigned)floor((2629575 * u(n))/(double)m);
+}
+unsigned w24(unsigned n){
+  return 24 + 25 * v24(n);
+}
+
+// Fonction pour calculer le coefficient binomial C(n, k)
+unsigned int coefficient_binomial(int n, int k) {
+    if (k > n - k) {
+        k = n - k;
+    }
+    unsigned int result = 1;
+    for (int i = 0; i < k; ++i) {
+        result *= (n - i);
+        result /= (i + 1);
+    }
+    return result;
+}
+
+unsigned int encoder(int* p){
+  unsigned int res = 0;
+  int c_k = p[0];
+  for(int i = 1; i < 12; i++){
+    res += coefficient_binomial(c_k, i);
+    c_k = p[i] + 1 + c_k;
+  }
+  return res;
+}
+
+void test(){
+  printf("a) %u, %lf, %u\n", u(1)%37, v7(1)%37, w7(1)%37);
+  printf("b) %u, %lf, %u\n", u(1000)%37, v7(1000)%37, w7(1000)%37);
+  printf("c) %u, %lf, %u\n", u(1000000)%37, v7(1000000)%37, w7(1000000)%37);
+  return;
+}

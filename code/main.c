@@ -8,12 +8,14 @@
 #include "ia.h"
 #include "flat_mc.h"
 #include "mcts.h"
+#include "retrograde.h"
 
 int main(void){
   srand(time(NULL));
   //  srand(0);
-  afficherRatio(strategie_mcts, strategie_min_max_h1, 10);
 
+  test();
+  
   return 0;
 }
 

@@ -19,6 +19,5 @@ struct noeud {
 typedef struct noeud noeud;
 
 int strategie_mcts(position* pos);
-void test();
 
 #endif // MCTS_H_

@@ -1,0 +1,12 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+Voici le plateau d'Awalé :
+\begin{figure}[h]
+  \centering
+  \includegraphics{awale_plateau.pdf}
+\end{figure}
+
+\end{document}

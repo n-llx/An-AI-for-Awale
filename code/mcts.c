@@ -159,7 +159,7 @@ static void parcours_en_profondeur(noeud* racine, FILE* f, int* numero_noeud){
   }
 }
 
-static void affichage_arbre(noeud* arb){
+ void affichage_arbre_2(noeud* arb){
   // Entree : Un arbre
   // Sortie : Creation et affichage d'un fichier pour visualiser l'arbre
   const char* nom_fichier = "arbre_mcts.dot";
@@ -189,9 +189,10 @@ int strategie_mcts(position* pos){
   return -1;
 }
 
-
+/*
 void test(){
   position* pos = creer_position_fichier("grilles/grille0.txt", 1, 0, 0);
   printf("%d\n", strategie_mcts(pos));
   return;
 }
+*/

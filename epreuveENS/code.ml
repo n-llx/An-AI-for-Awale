@@ -334,10 +334,52 @@ let question8 () =
   Printf.printf "Question 8 :\n1) %d\n2) %d\n3) %d\n" (godel c1) (godel c2) (godel c3)
 ;;
 
+
+let ecart i j modulo =
+  if i < j then j - i - 1
+  else modulo - (i - j) - 1
+;;
+
+let enleve_pierres_apres position nb_pierres indice =
+  let n = 8 in
+  let res = ref [] in
+  let i = ref (indice mod n) in
+  let nb_pierres_restantes = ref nb_pierres in
+  while !nb_pierres_restantes > 0 do
+    let tab =
+      match !res with
+      | [] -> Array.copy position
+      | t :: q -> Array.copy t
+    in
+    let indice_suivant = (!i + 1) mod n in
+    tab.(indice_suivant) <- tab.(indice_suivant) - 1;
+    res := tab :: !res;
+    decr nb_pierres_restantes;
+    i := (!i + 1) mod n;
+  done;
+  !res
+;;
+
 (*Cette fonction prend une configuration et un numero de puits et renvoie la liste des anticoups qui amenent a cette configuration en jouant le puit p*)
 (*on realise une boucle qui pour chaque puit i sauf le puit p, decremente le nombre de graine dans le puits i et en ajoute une dans le puit p, on sauvegarde la configuration et on itere sur le puits suivant (different de p). On s'arrete quand on peut pas decrementer ie le puits i est a 0*)
-let listeCoupsPrecedents (c : configuration) p =
-  failwith "A implementer"
-;;
-  
 
+let listeCoupsPrecedents (c : configuration) p =
+  let n = 8 in 
+  let i = ref ((p + 1) mod n) in
+  let p_min = ref (-1) in
+  let min = ref 99 in
+  (* On commence par regarder parmi les puits suivant lequel a le plus petit nombre de pierres *)
+  while !i <> p && !min <> 0 do
+    if c.(!i) < !min then (
+      min := c.(!i);
+      p_min := !i;
+    );
+    i := (!i + 1) mod n;
+  done;
+  enleve_pierres_apres c (ecart p !p_min n) p;
+;;
+
+
+let anti_coups (c : configuration) =
+  (*Renvoie une liste des coups menant a la configuration c*)
+  failwith "To do" (*Le faire avec tout les puits*)

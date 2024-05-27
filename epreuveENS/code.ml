@@ -161,7 +161,7 @@ let printConfig (a : configuration) =
   for i = 0 to 3 do
     Printf.printf "%d " a.(i);
   done;
- Printf.printf "\n";
+ Printf.printf "\n\n";
 ;;
 
 (**Affichage de la question 4**)
@@ -240,7 +240,7 @@ let famine (c : configuration) : bool =
 
 
 exception Impossible;;
-let puitsJouables (c : configuration) : int list =
+let puits_jouables_joueur (c : configuration) : int list =
   let jouables = ref [] in
   for i = 0 to 3 do
     try
@@ -257,8 +257,9 @@ let puitsJouables (c : configuration) : int list =
   !jouables
 ;;
 
-let jouable (c : configuration) : bool =
-  ((puitsJouables c) <> [])
+
+let jouable_joueur (c : configuration) : bool =
+  ((puits_jouables_joueur c) <> [])
 ;;
 
 let troisPremierNonJouable () : int list =
@@ -268,7 +269,7 @@ let troisPremierNonJouable () : int list =
   while !compteur < 10000 && List.length !res < 3 do
     incr compteur;
     configuration := godelVersConfig (w7 !compteur);
-    if not (jouable !configuration) && (estPossible !configuration) then
+    if not (jouable_joueur !configuration) && (estPossible !configuration) then
       res := !compteur :: !res
     else
       ()
@@ -284,10 +285,10 @@ let question6 (i : int) : int * int =
   while !compteur < 10000 && !condition do
     incr compteur;
     config := godelVersConfig (w24 !compteur);
-    condition := List.length (puitsJouables !config) <> i;
+    condition := List.length (puits_jouables_joueur !config) <> i;
   done;
   let grainesRamassees =
-    List.map (fun x -> coup (Array.copy !config) x) (puitsJouables !config) in
+    List.map (fun x -> coup (Array.copy !config) x) (puits_jouables_joueur !config) in
   let maxGraine = List.fold_left max (-1) grainesRamassees in
   (!compteur, maxGraine)
 ;;
@@ -299,7 +300,7 @@ let question7 () =
   while !compteur < 10000 && List.length !res <> 3 do
     incr compteur;
     configuration := godelVersConfig (w24 !compteur);
-    if not (jouable (godelVersConfig (w24 !compteur))) then
+    if not (jouable_joueur (godelVersConfig (w24 !compteur))) then
       res := !compteur :: !res
     else
       ()
@@ -334,52 +335,90 @@ let question8 () =
   Printf.printf "Question 8 :\n1) %d\n2) %d\n3) %d\n" (godel c1) (godel c2) (godel c3)
 ;;
 
-
-let ecart i j modulo =
-  if i < j then j - i - 1
-  else modulo - (i - j) - 1
+let coup_mene_recolte (c : configuration) (p : int) : bool =
+  (*Renvoie vrai si on recolte en jouant le puit p de la config c*)
+  let copy = Array.copy c in
+  (coup copy p) <> 0
 ;;
 
-let enleve_pierres_apres position nb_pierres indice =
-  let n = 8 in
+let coup_jouable (c : configuration) (p : int) : bool =
+  (*Renvoie vrai si le coup p est jouable depuis la config c*)
+  let copy = Array.copy c in
+  let possible_bas = puits_jouables_joueur copy in
+(*  retourne copy;
+    let possible_haut = puits_jouables_joueur copy in*)
+  List.mem p possible_bas
+;;
+
+  
+let liste_anti_coup_puit (c : configuration) (p : int) : configuration list=
+  assert(c.(p) = 0);
+  let ajouter = ref true in
   let res = ref [] in
-  let i = ref (indice mod n) in
-  let nb_pierres_restantes = ref nb_pierres in
-  while !nb_pierres_restantes > 0 do
-    let tab =
-      match !res with
-      | [] -> Array.copy position
-      | t :: q -> Array.copy t
-    in
-    let indice_suivant = (!i + 1) mod n in
-    tab.(indice_suivant) <- tab.(indice_suivant) - 1;
-    res := tab :: !res;
-    decr nb_pierres_restantes;
-    i := (!i + 1) mod n;
+  let ancienne_config = ref c in
+  let compteur = ref 1 in
+  let n = 8 in
+  while !ajouter do
+    let nouvelle_config = Array.copy !ancienne_config in
+    nouvelle_config.(p) <- nouvelle_config.(p) + 1;
+    let supp_indice = (p + !compteur) mod n in
+    nouvelle_config.(supp_indice) <- nouvelle_config.(supp_indice) - 1;
+    if not (coup_mene_recolte nouvelle_config p) && coup_jouable nouvelle_config p && nouvelle_config.(supp_indice) >= 0 && !compteur < 50 then
+      (
+        incr compteur;
+        res := nouvelle_config :: !res;
+        ancienne_config := nouvelle_config
+      )
+    else 
+    if nouvelle_config.(supp_indice) >= 0 && !compteur < 50 then
+      (
+        incr compteur;
+        ancienne_config := nouvelle_config;
+      )
+    else
+      ajouter := false
+  done;
+  !res
+;;
+    
+let liste_anti_coups (c : configuration) =
+  (*Renvoie une liste des coups menant a la configuration c*)
+  (*On suppose que le joueur qui va jouer est au Sud*)
+  let n = 4 in
+  let res = ref [] in
+  let ajoute_elts_liste tableau =
+    List.iter (fun a -> res := a :: !res;) tableau;
+  in
+  for i = 0 to n-1 do
+    if c.(i) = 0 then
+      (
+        ajoute_elts_liste (liste_anti_coup_puit c i);
+    )
   done;
   !res
 ;;
 
-(*Cette fonction prend une configuration et un numero de puits et renvoie la liste des anticoups qui amenent a cette configuration en jouant le puit p*)
-(*on realise une boucle qui pour chaque puit i sauf le puit p, decremente le nombre de graine dans le puits i et en ajoute une dans le puit p, on sauvegarde la configuration et on itere sur le puits suivant (different de p). On s'arrete quand on peut pas decrementer ie le puits i est a 0*)
-
-let listeCoupsPrecedents (c : configuration) p =
-  let n = 8 in 
-  let i = ref ((p + 1) mod n) in
-  let p_min = ref (-1) in
-  let min = ref 99 in
-  (* On commence par regarder parmi les puits suivant lequel a le plus petit nombre de pierres *)
-  while !i <> p && !min <> 0 do
-    if c.(!i) < !min then (
-      min := c.(!i);
-      p_min := !i;
-    );
-    i := (!i + 1) mod n;
+let question9 k =
+  let i = ref 1 in
+  let compteur = ref 0 in
+  let liste_coup = ref (liste_anti_coups (godelVersConfig (w24 !i))) in
+  while List.length !liste_coup <> k && !compteur < 1000 do
+    incr i;
+    incr compteur;
+    liste_coup := liste_anti_coups (godelVersConfig (w24 !i));
   done;
-  enleve_pierres_apres c (ecart p !p_min n) p;
+  (!liste_coup, !i)
 ;;
 
-
-let anti_coups (c : configuration) =
-  (*Renvoie une liste des coups menant a la configuration c*)
-  failwith "To do" (*Le faire avec tout les puits*)
+let affiche_question_9 () =
+  let somme_godel acc conf = (acc + (godel conf)) mod 37 in
+  for i = 0 to 6 do
+    let liste_coup, n_k = question9 i in
+    let somme_liste = List.fold_left somme_godel 0 liste_coup in
+    Printf.printf "%c) (%d, %d)\n" (char_of_int(97 + i)) n_k somme_liste
+  done;
+;;
+        
+    
+    
+    

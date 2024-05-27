@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Présentation des règles du jeu et motivations}{5}{0}{1}
+\beamer@sectionintoc {2}{Échec de l'approche théorique et des premiers algorithmes}{6}{0}{2}
+\beamer@sectionintoc {3}{Des résultats concluents grâce à deux nouvelles techniques : la recherche arborescente de Monte-Carlo et l'analyse rétrograde}{7}{0}{3}

@@ -16,8 +16,10 @@
     "beamer"
     "beamer10"
     "palatino"
-    "tikz")
-   (LaTeX-add-environments
-    '("awalefigure" 12)))
+    "tikz"
+    "graphicx")
+   (LaTeX-add-labels
+    "fig:mon_image"
+    "fig1"))
  :latex)
 

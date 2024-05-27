@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.6.1)  27 MAY 2024 18:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.6.1)  27 MAY 2024 17:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**test.tex
-(./test.tex
+**_region_.tex
+(./_region_.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-05-07>
+L3 programming layer <2021-05-07>  !name(test.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2021/03/19 v3.62 A class for typesetting presentations
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
@@ -839,8 +839,8 @@ File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count331
 \l__pdf_internal_box=\box77
 )
-(./test.aux)
-\openout1 = `test.aux'.
+No file _region_.aux.
+\openout1 = `_region_.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
@@ -860,7 +860,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -933,10 +932,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 14.
 LaTeX Info: Redefining \pageref on input line 14.
 LaTeX Info: Redefining \nameref on input line 14.
-
-(./test.out) (./test.out)
 \@outlinefile=\write5
-\openout5 = `test.out'.
+\openout5 = `_region_.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 14.
@@ -1004,100 +1001,102 @@ Dictionary: translator-numbers-dictionary, Language: English
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-theorem-dictiona
 ry-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
-) (./test.nav) [1
+)
+No file _region_.nav.
+ !name(test.tex) !offset(-3)  [1
 
 {/usr/share/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<ressources/photo_joueur_awale.jpeg, id=70, 253.94875pt x 200.75pt>
+<ressources/photo_joueur_awale.jpeg, id=54, 253.94875pt x 200.75pt>
 File: ressources/photo_joueur_awale.jpeg Graphic file (type jpg)
 <use ressources/photo_joueur_awale.jpeg>
 Package pdftex.def Info: ressources/photo_joueur_awale.jpeg  used on input line
- 43.
+ 46.
 (pdftex.def)             Requested size: 154.03442pt x 121.77115pt.
 
-Overfull \hbox (51.3448pt too wide) in paragraph at lines 43--43
+Overfull \hbox (51.3448pt too wide) in paragraph at lines 46--46
  [] 
  []
 
-<ressources/wole_soyinka.jpeg, id=71, 194.7275pt x 259.97125pt>
+<ressources/wole_soyinka.jpeg, id=55, 194.7275pt x 259.97125pt>
 File: ressources/wole_soyinka.jpeg Graphic file (type jpg)
 <use ressources/wole_soyinka.jpeg>
-Package pdftex.def Info: ressources/wole_soyinka.jpeg  used on input line 43.
+Package pdftex.def Info: ressources/wole_soyinka.jpeg  used on input line 46.
 (pdftex.def)             Requested size: 131.44072pt x 175.48491pt.
 [2
 
  <./ressources/photo_joueur_awale.jpeg> <./ressources/wole_soyinka.jpeg>]
-<ressources/ancien_plateau_jeu.png, id=100, 1023.825pt x 595.22375pt>
+<ressources/ancien_plateau_jeu.png, id=84, 1023.825pt x 595.22375pt>
 File: ressources/ancien_plateau_jeu.png Graphic file (type png)
 <use ressources/ancien_plateau_jeu.png>
 Package pdftex.def Info: ressources/ancien_plateau_jeu.png  used on input line 
-52.
+55.
 (pdftex.def)             Requested size: 342.2953pt x 198.99475pt.
 
-Overfull \vbox (7.01859pt too high) detected at line 52
+Overfull \vbox (7.01859pt too high) detected at line 55
  []
 
 [3
 
- <./ressources/ancien_plateau_jeu.png>] (./test.toc) [4
+ <./ressources/ancien_plateau_jeu.png>]
+No file _region_.toc.
+[4
 
 ]
-<ressources/p_debut.jpg, id=163, 4272.96375pt x 1108.14pt>
-File: ressources/p_debut.jpg Graphic file (type jpg)
-<use ressources/p_debut.jpg>
-Package pdftex.def Info: ressources/p_debut.jpg  used on input line 84.
-(pdftex.def)             Requested size: 176.1134pt x 45.67075pt.
+<ressources/p_debut.pdf, id=142, 341.83308pt x 88.64317pt>
+File: ressources/p_debut.pdf Graphic file (type pdf)
+<use ressources/p_debut.pdf>
+Package pdftex.def Info: ressources/p_debut.pdf  used on input line 87.
+(pdftex.def)             Requested size: 176.1134pt x 45.66864pt.
 
-Overfull \hbox (8.38683pt too wide) in paragraph at lines 84--84
+Overfull \hbox (8.38683pt too wide) in paragraph at lines 87--87
  [] 
  []
 
 [5
 
- <./ressources/p_debut.jpg>]
-<ressources/diagramme1.png, id=190, 291.0875pt x 334.24875pt>
-File: ressources/diagramme1.png Graphic file (type png)
-<use ressources/diagramme1.png>
-Package pdftex.def Info: ressources/diagramme1.png  used on input line 103.
-(pdftex.def)             Requested size: 154.03183pt x 176.87558pt.
-<ressources/diagramme2.png, id=191, 391.4625pt x 290.08376pt>
-File: ressources/diagramme2.png Graphic file (type png)
-<use ressources/diagramme2.png>
-Package pdftex.def Info: ressources/diagramme2.png  used on input line 103.
-(pdftex.def)             Requested size: 154.03183pt x 114.1414pt.
- [6
+ <./ressources/p_debut.pdf>] [6
 
- <./ressources/diagramme1.png> <./ressources/diagramme2.png>] [7
-
-] [8
+] [7
 
 ]
 \tf@nav=\write6
-\openout6 = `test.nav'.
+\openout6 = `_region_.nav'.
 
 \tf@toc=\write7
-\openout7 = `test.toc'.
+\openout7 = `_region_.toc'.
 
 \tf@snm=\write8
-\openout8 = `test.snm'.
+\openout8 = `_region_.snm'.
 
- (./test.aux)
-Package rerunfilecheck Info: File `test.out' has not changed.
-(rerunfilecheck)             Checksum: 5447A14BE711907B49B74011F500E121;1375.
+ (./_region_.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `_region_.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `_region_.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  5447A14BE711907B49B74011F500E121;1375.
  ) 
 Here is how much of TeX's memory you used:
- 23854 strings out of 480806
- 459045 string characters out of 5905152
- 734414 words of memory out of 6000000
- 40709 multiletter control sequences out of 15000+600000
+ 23756 strings out of 480806
+ 457359 string characters out of 5905152
+ 733740 words of memory out of 6000000
+ 40626 multiletter control sequences out of 15000+600000
  413441 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 128i,15n,126p,768b,598s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 128i,15n,126p,429b,561s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on test.pdf (8 pages, 1753250 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on _region_.pdf (7 pages, 1573995 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 247 compressed objects within 3 object streams
- 22 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 252 PDF objects out of 1000 (max. 8388607)
+ 218 compressed objects within 3 object streams
+ 20 named destinations out of 1000 (max. 500000)
+ 105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

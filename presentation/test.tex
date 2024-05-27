@@ -4,6 +4,10 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usefonttheme[onlymath]{serif}
+
 % Définition de l'environnement pour la figure d'Awalé avec un nombre variable de paramètres pour les pierres
 
 \date[]{}
@@ -47,7 +51,7 @@
   \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{ressources/ancien_plateau_jeu.png}
-    \caption{Un ancien plateau de jeu decouvert au Kenya}
+    \caption{Un ancien plateau de jeu découvert au Kenya}
   \end{figure}
 \end{frame}
 
@@ -102,16 +106,73 @@
   \end{minipage}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Motivations}
+  \begin{itemize}
+  \item Le facteur d'embrachement est assez faible.
+  \item Possibilité d'utiliser des algorithmes classiques de la théorie des jeux pour trouver le coup optimal
+  \item Il y a moins de $10^{14}$ états possibles.
+  \end{itemize}
+\end{frame}
+
 \section{Échec de l'approche théorique et des premiers algorithmes}
 \begin{frame}
   \frametitle{Une approche théorique}
-  
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{ressources/determined_positions.png}
+    \caption{Un position déterminée}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{L'algorithme min-max}
+  Insérer un schéma de min max
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Problème du min-max classique}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{ressources/min_max_heuristique.png}
+    \caption{Un exemple de min max avec heuristique}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Résultat min-max}
+  Insérer les résultats
+\end{frame}
+
+\begin{frame}
+  \frametitle{Un algorithme de Monte Carlo}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{ressources/monte_carlo_explication.png}
+    \caption{Principe de l'algorithme de Monte Carlo}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Des résultats peu convaincants}
+  Insérer les résultats
 \end{frame}
 
 \section{Des résultats concluents grâce à deux nouvelles techniques : la recherche arborescente de Monte-Carlo et l'analyse rétrograde}
 \begin{frame}
-  \frametitle{Un problème bien connu}
-  
+  \frametitle{Une amélioration de l'algorithme précédent}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{ressources/monte_carlo_explication.png}
+    \caption{Principe de la recherche arborescente de Monte Carlo}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comment choisir le noeud à explorer ?}
+  On attribue à chaque noeud $n$ un score Q qui correspond à la moyenne des gains remportés part toutes les parties contenant le noeud $n$. Étant donné un noeud $n$ et son père $p$, on a :
+  $$ Q(n) = \frac 1 {N(n)} \sum_{i=1}^{N(p)}\mathbb I_i(n)z_i $$
 \end{frame}
 
 

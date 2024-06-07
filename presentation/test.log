@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.6.1)  27 MAY 2024 21:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.6.1)  5 JUN 2024 10:33
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **test.tex
@@ -828,6 +828,46 @@ File: pgfmodulematrix.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 zlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )))
+(/usr/share/texlive/texmf-dist/tex/latex/svg/svg.sty
+Package: svg 2020/11/26 v2.02k (include SVG pictures)
+
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2021/03/17 v3.33 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+Skipping: [2021/05/01] Usage of raw option list on input line 252.
+Applying: [0000/00/00] compatibility for LaTeX before 2021/05/01 on input line 
+337.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 75.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+(/usr/share/texlive/texmf-dist/tex/generic/catchfile/catchfile.sty
+Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+runsystem(uname -s > "test.w18")...executed.
+
+ (./test.w18)
+runsystem(rm -- "test.w18")...executed.
+
+)
+\c@svg@param@lastpage=\count331
+\svg@box=\box77
+\c@svg@param@currpage=\count332
+)
+(/usr/share/texlive/texmf-dist/tex/latex/transparent/transparent.sty
+Package: transparent 2019/11/29 v1.4 Transparency via pdfTeX's color stack (HO)
+
+)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 11
@@ -844,30 +884,30 @@ Package: inputenc 2020/08/01 v1.3d Input encoding file
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerfontthemeserif.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count331
-\l__pdf_internal_box=\box77
+\l__color_backend_stack_int=\count333
+\l__pdf_internal_box=\box78
 )
 (./test.aux)
 \openout1 = `test.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -905,16 +945,16 @@ LaTeX Font Info:    ... okay on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count332
+\scratchcounter=\count334
 \scratchdimen=\dimen297
-\scratchbox=\box78
-\nofMPsegments=\count333
-\nofMParguments=\count334
+\scratchbox=\box79
+\nofMPsegments=\count335
+\nofMParguments=\count336
 \everyMPshowfont=\toks48
-\MPscratchCnt=\count335
+\MPscratchCnt=\count337
 \MPscratchDim=\dimen298
-\MPnumerator=\count336
-\makeMPintoPDFobject=\count337
+\MPnumerator=\count338
+\makeMPintoPDFobject=\count339
 \everyMPtoPDFconversion=\toks49
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -933,7 +973,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 18.
+Package hyperref Info: Link coloring OFF on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -944,11 +984,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count338
+\c@section@level=\count340
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
-LaTeX Info: Redefining \nameref on input line 18.
+LaTeX Info: Redefining \ref on input line 25.
+LaTeX Info: Redefining \pageref on input line 25.
+LaTeX Info: Redefining \nameref on input line 25.
 
 (./test.out) (./test.out)
 \@outlinefile=\write5
@@ -957,41 +997,41 @@ LaTeX Info: Redefining \nameref on input line 18.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmr/m/n --> T1/ppl/m/n on input line 18.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 18.
+(Font)                  OT1/cmr/m/n --> T1/ppl/m/n on input line 25.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/ppl/b/n on input line 18.
+(Font)                  OT1/cmr/bx/n --> T1/ppl/b/n on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/ppl/b/n on input line 18.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 18.
+(Font)                  OT1/cmr/bx/n --> T1/ppl/b/n on input line 25.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/phv/m/n on input line 18.
+(Font)                  OT1/cmss/m/n --> T1/phv/m/n on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/phv/m/n on input line 18.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 18.
+(Font)                  OT1/cmss/bx/n --> T1/phv/m/n on input line 25.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/ppl/m/it on input line 18.
+(Font)                  OT1/cmr/m/it --> T1/ppl/m/it on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/ppl/m/it on input line 18.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 18.
+(Font)                  OT1/cmr/bx/it --> T1/ppl/m/it on input line 25.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 18.
+(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 18.
+(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 25.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/ppl/m/n --> T1/ppl/b/n on input line 18.
+(Font)                  T1/ppl/m/n --> T1/ppl/b/n on input line 25.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/ppl/m/it --> T1/ppl/b/it on input line 18.
+(Font)                  T1/ppl/m/it --> T1/ppl/b/it on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/ppl/b/n on input line 18.
+(Font)                  OT1/cmr/bx/n --> T1/ppl/b/n on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/ppl/b/n --> T1/ppl/b/n on input line 18.
+(Font)                  T1/ppl/b/n --> T1/ppl/b/n on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/phv/m/n --> T1/phv/b/n on input line 18.
+(Font)                  T1/phv/m/n --> T1/phv/b/n on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/ppl/m/it --> T1/ppl/b/it on input line 18.
+(Font)                  T1/ppl/m/it --> T1/ppl/b/it on input line 25.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/pcr/m/n --> T1/pcr/b/n on input line 18.
+(Font)                  T1/pcr/m/n --> T1/pcr/b/n on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -1023,29 +1063,36 @@ Dictionary: translator-theorem-dictionary, Language: English
 File: ressources/photo_joueur_awale.jpeg Graphic file (type jpg)
 <use ressources/photo_joueur_awale.jpeg>
 Package pdftex.def Info: ressources/photo_joueur_awale.jpeg  used on input line
- 47.
-(pdftex.def)             Requested size: 154.03442pt x 121.77115pt.
+ 61.
+(pdftex.def)             Requested size: 112.9592pt x 89.29517pt.
 
-Overfull \hbox (51.3448pt too wide) in paragraph at lines 47--47
+Overfull \hbox (10.26958pt too wide) in paragraph at lines 61--61
  [] 
  []
 
 <ressources/wole_soyinka.jpeg, id=71, 194.7275pt x 259.97125pt>
 File: ressources/wole_soyinka.jpeg Graphic file (type jpg)
 <use ressources/wole_soyinka.jpeg>
-Package pdftex.def Info: ressources/wole_soyinka.jpeg  used on input line 47.
-(pdftex.def)             Requested size: 131.44072pt x 175.48491pt.
+Package pdftex.def Info: ressources/wole_soyinka.jpeg  used on input line 61.
+(pdftex.def)             Requested size: 71.88242pt x 95.96571pt.
+<ressources/ake_les_annees_denfance.png, id=72, 660.4675pt x 1003.75pt>
+File: ressources/ake_les_annees_denfance.png Graphic file (type png)
+<use ressources/ake_les_annees_denfance.png>
+Package pdftex.def Info: ressources/ake_les_annees_denfance.png  used on input 
+line 61.
+(pdftex.def)             Requested size: 92.42003pt x 140.44746pt.
 [2
 
- <./ressources/photo_joueur_awale.jpeg> <./ressources/wole_soyinka.jpeg>]
-<ressources/ancien_plateau_jeu.png, id=100, 1023.825pt x 595.22375pt>
+ <./ressources/photo_joueur_awale.jpeg> <./ressources/wole_soyinka.jpeg> <./res
+sources/ake_les_annees_denfance.png>]
+<ressources/ancien_plateau_jeu.png, id=104, 1023.825pt x 595.22375pt>
 File: ressources/ancien_plateau_jeu.png Graphic file (type png)
 <use ressources/ancien_plateau_jeu.png>
 Package pdftex.def Info: ressources/ancien_plateau_jeu.png  used on input line 
-56.
+71.
 (pdftex.def)             Requested size: 342.2953pt x 198.99475pt.
 
-Overfull \vbox (7.01859pt too high) detected at line 56
+Overfull \vbox (7.01859pt too high) detected at line 71
  []
 
 [3
@@ -1053,99 +1100,189 @@ Overfull \vbox (7.01859pt too high) detected at line 56
  <./ressources/ancien_plateau_jeu.png>] (./test.toc) [4
 
 ]
-<ressources/p_debut.jpg, id=164, 4272.96375pt x 1108.14pt>
-File: ressources/p_debut.jpg Graphic file (type jpg)
-<use ressources/p_debut.jpg>
-Package pdftex.def Info: ressources/p_debut.jpg  used on input line 88.
-(pdftex.def)             Requested size: 176.1134pt x 45.67075pt.
+Package svg Info: Last page of `./svg-inkscape/diagramme_debut_partie_svg-tex.p
+df' is 1 on input line 92.
 
-Overfull \hbox (8.38683pt too wide) in paragraph at lines 88--88
- [] 
- []
+(./svg-inkscape/diagramme_debut_partie_svg-tex.pdf_tex
+<./svg-inkscape/diagramme_debut_partie_svg-tex.pdf, id=180, page=1, 274.02377pt
+ x 292.84406pt>
+File: ./svg-inkscape/diagramme_debut_partie_svg-tex.pdf Graphic file (type pdf)
 
-[5
+<use ./svg-inkscape/diagramme_debut_partie_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/diagramme_debut_partie_svg-tex.pdf , pa
+ge1 used on input line 56.
+(pdftex.def)             Requested size: 171.14764pt x 182.90643pt.
+) [5
 
- <./ressources/p_debut.jpg>]
-<ressources/diagramme1.png, id=192, 291.0875pt x 334.24875pt>
-File: ressources/diagramme1.png Graphic file (type png)
-<use ressources/diagramme1.png>
-Package pdftex.def Info: ressources/diagramme1.png  used on input line 107.
-(pdftex.def)             Requested size: 154.03183pt x 176.87558pt.
-<ressources/diagramme2.png, id=193, 391.4625pt x 290.08376pt>
-File: ressources/diagramme2.png Graphic file (type png)
-<use ressources/diagramme2.png>
-Package pdftex.def Info: ressources/diagramme2.png  used on input line 107.
-(pdftex.def)             Requested size: 154.03183pt x 114.1414pt.
- [6
+ <./svg-inkscape/diagramme_debut_partie_svg-tex.pdf>]
+Package svg Info: Last page of `./svg-inkscape/diagramme_capture_svg-tex.pdf' i
+s 1 on input line 101.
 
- <./ressources/diagramme1.png> <./ressources/diagramme2.png>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 116
+(./svg-inkscape/diagramme_capture_svg-tex.pdf_tex
+<./svg-inkscape/diagramme_capture_svg-tex.pdf, id=228, page=1, 877.02657pt x 27
+1.0125pt>
+File: ./svg-inkscape/diagramme_capture_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/diagramme_capture_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/diagramme_capture_svg-tex.pdf , page1 u
+sed on input line 56.
+(pdftex.def)             Requested size: 342.2953pt x 105.77301pt.
+) [6
+
+ <./svg-inkscape/diagramme_capture_svg-tex.pdf>] [7
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 127
 .
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 116
+LaTeX Font Info:    Trying to load font information for U+msb on input line 127
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+ppl on input line 11
-6.
+LaTeX Font Info:    Trying to load font information for T1+ppl on input line 12
+7.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
-) [7
+) [8
+
+] [9
 
 ]
-<ressources/determined_positions.png, id=248, 731.73375pt x 429.605pt>
-File: ressources/determined_positions.png Graphic file (type png)
-<use ressources/determined_positions.png>
-Package pdftex.def Info: ressources/determined_positions.png  used on input lin
-e 126.
-(pdftex.def)             Requested size: 342.2953pt x 200.96387pt.
+Package svg Info: Last page of `./svg-inkscape/diagramme_min_max_svg-tex.pdf' i
+s 1 on input line 147.
 
-Overfull \vbox (8.9877pt too high) detected at line 126
- []
+(./svg-inkscape/diagramme_min_max_svg-tex.pdf_tex
+<./svg-inkscape/diagramme_min_max_svg-tex.pdf, id=371, page=1, 1133.17102pt x 4
+07.64796pt>
+File: ./svg-inkscape/diagramme_min_max_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/diagramme_min_max_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/diagramme_min_max_svg-tex.pdf , page1 u
+sed on input line 56.
+(pdftex.def)             Requested size: 342.2953pt x 123.13506pt.
+) [10
 
-[8
-
- <./ressources/determined_positions.png>] [9
-
-]
-<ressources/min_max_heuristique.png, id=304, 346.29375pt x 200.75pt>
+ <./svg-inkscape/diagramme_min_max_svg-tex.pdf>]
+<ressources/min_max_heuristique.png, id=453, 346.29375pt x 200.75pt>
 File: ressources/min_max_heuristique.png Graphic file (type png)
 <use ressources/min_max_heuristique.png>
 Package pdftex.def Info: ressources/min_max_heuristique.png  used on input line
- 141.
+ 157.
 (pdftex.def)             Requested size: 273.83728pt x 158.75003pt.
- [10
+ [11
 
- <./ressources/min_max_heuristique.png>] [11
+ <./ressources/min_max_heuristique.png>]
+<ressources/resultat_min_max.png, id=481, 578.16pt x 433.62pt>
+File: ressources/resultat_min_max.png Graphic file (type png)
+<use ressources/resultat_min_max.png>
+Package pdftex.def Info: ressources/resultat_min_max.png  used on input line 16
+6.
+(pdftex.def)             Requested size: 256.72147pt x 192.54015pt.
 
-]
-<ressources/monte_carlo_explication.png, id=358, 696.6025pt x 309.155pt>
+Overfull \vbox (0.56398pt too high) detected at line 166
+ []
+
+[12
+
+ <./ressources/resultat_min_max.png>]
+<ressources/monte_carlo_explication.png, id=509, 696.6025pt x 309.155pt>
 File: ressources/monte_carlo_explication.png Graphic file (type png)
 <use ressources/monte_carlo_explication.png>
 Package pdftex.def Info: ressources/monte_carlo_explication.png  used on input 
-line 155.
+line 175.
 (pdftex.def)             Requested size: 342.2953pt x 151.91182pt.
- [12
+ [13
 
- <./ressources/monte_carlo_explication.png>] [13
+ <./ressources/monte_carlo_explication.png>]
+<ressources/resultat_flat_monte_carlo.png, id=538, 578.16pt x 433.62pt>
+File: ressources/resultat_flat_monte_carlo.png Graphic file (type png)
+<use ressources/resultat_flat_monte_carlo.png>
+Package pdftex.def Info: ressources/resultat_flat_monte_carlo.png  used on inpu
+t line 184.
+(pdftex.def)             Requested size: 256.72147pt x 192.54015pt.
 
-]
+Overfull \vbox (0.56398pt too high) detected at line 184
+ []
+
+[14
+
+ <./ressources/resultat_flat_monte_carlo.png>]
 File: ressources/monte_carlo_explication.png Graphic file (type png)
 <use ressources/monte_carlo_explication.png>
 Package pdftex.def Info: ressources/monte_carlo_explication.png  used on input 
-line 170.
+line 194.
 (pdftex.def)             Requested size: 342.2953pt x 151.91182pt.
- [14
+ [15
+
+] [16
+
+] [17
 
 ]
-[15
+
+pdfTeX warning: pdflatex (file ./ressources/arbre_40_flat.pdf): PDF inclusion: 
+found PDF version <1.7>, but at most version <1.5> allowed
+<ressources/arbre_40_flat.pdf, id=675, 1616.0375pt x 662.475pt>
+File: ressources/arbre_40_flat.pdf Graphic file (type pdf)
+<use ressources/arbre_40_flat.pdf>
+Package pdftex.def Info: ressources/arbre_40_flat.pdf  used on input line 220.
+(pdftex.def)             Requested size: 342.2953pt x 140.31667pt.
+[18
+
+ <./ressources/arbre_40_flat.pdf>]
+
+pdfTeX warning: pdflatex (file ./ressources/arbre_40_mcts.pdf): PDF inclusion: 
+found PDF version <1.7>, but at most version <1.5> allowed
+<ressources/arbre_40_mcts.pdf, id=710, 3461.93375pt x 662.475pt>
+File: ressources/arbre_40_mcts.pdf Graphic file (type pdf)
+<use ressources/arbre_40_mcts.pdf>
+Package pdftex.def Info: ressources/arbre_40_mcts.pdf  used on input line 229.
+(pdftex.def)             Requested size: 342.2953pt x 65.49324pt.
+[19
+
+ <./ressources/arbre_40_mcts.pdf>]
+<ressources/resultat_mcts.png, id=746, 578.16pt x 433.62pt>
+File: ressources/resultat_mcts.png Graphic file (type png)
+<use ressources/resultat_mcts.png>
+Package pdftex.def Info: ressources/resultat_mcts.png  used on input line 238.
+(pdftex.def)             Requested size: 239.60567pt x 179.70413pt.
+
+Overfull \vbox (5.72797pt too high) detected at line 238
+ []
+
+[20
+
+ <./ressources/resultat_mcts.png>] [21
+
+] [22
 
 ]
+Overfull \vbox (4.68541pt too high) detected at line 272
+ []
+
+[23
+
+] [24
+
+]
+Package svg Info: Last page of `./svg-inkscape/diagramme_stars_and_bars_svg-tex
+.pdf' is 1 on input line 292.
+ (./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf_tex
+<./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf, id=918, page=1, 502.12593
+pt x 67.75313pt>
+File: ./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf Graphic file (type pd
+f)
+<use ./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf , 
+page1 used on input line 56.
+(pdftex.def)             Requested size: 171.14764pt x 23.09364pt.
+) [25
+
+ <./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf>]
 \tf@nav=\write6
 \openout6 = `test.nav'.
 
@@ -1155,30 +1292,39 @@ line 170.
 \tf@snm=\write8
 \openout8 = `test.snm'.
 
+
+LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
+(LaTeX3)     295.
+
  (./test.aux)
 Package rerunfilecheck Info: File `test.out' has not changed.
 (rerunfilecheck)             Checksum: 5447A14BE711907B49B74011F500E121;1375.
  ) 
 Here is how much of TeX's memory you used:
- 24260 strings out of 480806
- 464985 string characters out of 5905152
- 734926 words of memory out of 6000000
- 41058 multiletter control sequences out of 15000+600000
- 432715 words of font info for 67 fonts, out of 8000000 for 9000
+ 25294 strings out of 480806
+ 488505 string characters out of 5905152
+ 785299 words of memory out of 6000000
+ 42006 multiletter control sequences out of 15000+600000
+ 454430 words of font info for 104 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 128i,15n,126p,768b,618s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 128i,15n,126p,768b,730s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palat
-ino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.
-pfb>
-Output written on test.pdf (15 pages, 1940216 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on test.pdf (25 pages, 3171809 bytes).
 PDF statistics:
- 502 PDF objects out of 1000 (max. 8388607)
- 443 compressed objects within 5 object streams
- 36 named destinations out of 1000 (max. 500000)
- 160 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1018 PDF objects out of 1200 (max. 8388607)
+ 835 compressed objects within 9 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 504 words of extra memory for PDF output out of 10000 (max. 10000000)
 

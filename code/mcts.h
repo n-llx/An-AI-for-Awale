@@ -5,8 +5,7 @@
 #include <math.h>
 #define CONSTANTE 0.70711
 // = 1/sqrt(2)
-#define CONTRAINTE_MCTS 100
-
+// #define CONTRAINTE_MCTS 1000
 
 struct noeud {
   int id;
@@ -19,5 +18,6 @@ struct noeud {
 typedef struct noeud noeud;
 
 int strategie_mcts(position* pos);
+void test_mcts();
 
 #endif // MCTS_H_

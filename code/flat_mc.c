@@ -189,4 +189,11 @@ int strategie_flat_mc(position* p){
   return meilleur_coup + si_joueur_2;
 }
 
+void test_flat_mc(){
+  position* pos = creer_position_fichier("grilles/grille2.txt", 1, 0, 0);
+  node* racine = flat_mc(pos);
+  affichage_arbre(racine);
+  printf("Done\n");
+}
+
 

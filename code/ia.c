@@ -352,7 +352,7 @@ int strategie_min_max_h1(position* pos){
   // Entree : une position
   // Sortie : Le coup a jouer en utilisant l'algo min max
   int* meilleur_coup = malloc(sizeof(int));
-  min_max_heuristique(pos, heuristique_naive, 2, meilleur_coup);
+  min_max_heuristique(pos, heuristique_naive, 3, meilleur_coup);
   return *meilleur_coup;
 }
 

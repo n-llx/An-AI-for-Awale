@@ -3,7 +3,7 @@
 
 #include "ia.h"
 #include <time.h>
-#define CONTRAINTE 500
+#define CONTRAINTE 10
 struct node {
   int id;
   position* pos;
@@ -16,5 +16,6 @@ typedef struct node node;
 
 int strategie_flat_mc(position* p);
 node* flat_mc(position* p);
+void test_flat_mc();
 
 #endif // FLAT_MC_H_

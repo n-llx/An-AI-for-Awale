@@ -315,7 +315,7 @@ let godel (c : configuration) : int =
   n + 25 * enc_c
 ;;
 
-let retourne (c : configuration) : unit =
+let retourne (c : configuration) : configuration =
   let cpy = Array.copy c in
   for i = 0 to 7 do
     c.(i) <- cpy.((i + 4) mod 8)
@@ -362,21 +362,34 @@ let liste_anti_coup_puit (c : configuration) (p : int) : configuration list=
     let nouvelle_config = Array.copy !ancienne_config in
     nouvelle_config.(p) <- nouvelle_config.(p) + 1;
     let supp_indice = (p + !compteur) mod n in
-    nouvelle_config.(supp_indice) <- nouvelle_config.(supp_indice) - 1;
-    if not (coup_mene_recolte nouvelle_config p) && coup_jouable nouvelle_config p && nouvelle_config.(supp_indice) >= 0 && !compteur < 50 then
+    if supp_indice <> p then
       (
-        incr compteur;
-        res := nouvelle_config :: !res;
-        ancienne_config := nouvelle_config
-      )
-    else 
-    if nouvelle_config.(supp_indice) >= 0 && !compteur < 50 then
-      (
-        incr compteur;
-        ancienne_config := nouvelle_config;
+        nouvelle_config.(supp_indice) <- nouvelle_config.(supp_indice) - 1;
+        if not (coup_mene_recolte nouvelle_config p) && coup_jouable nouvelle_config p && nouvelle_config.(supp_indice) >= 0 && !compteur < 50 then
+          (
+            incr compteur;
+            res := nouvelle_config :: !res;
+            ancienne_config := nouvelle_config
+          )
+        else 
+          if nouvelle_config.(supp_indice) >= 0 && !compteur < 50 then
+            (* Attention on majore a 50 coups *)
+            (
+              incr compteur;
+              ancienne_config := nouvelle_config;
+            )
+          else
+            (
+              ajouter := false
+            )
       )
     else
-      ajouter := false
+      (
+        incr compteur;
+        nouvelle_config.(p) <- nouvelle_config.(p) - 1;
+        ancienne_config := nouvelle_config;
+        flush(stdout)
+      )
   done;
   !res
 ;;
@@ -418,7 +431,106 @@ let affiche_question_9 () =
     Printf.printf "%c) (%d, %d)\n" (char_of_int(97 + i)) n_k somme_liste
   done;
 ;;
-        
-    
-    
-    
+
+let nb_pierre_godel (godel : int) =
+  let config = godelVersConfig godel in
+  Array.fold_left (+) 0 config
+;;      
+
+let score_bdd (i : int) : int =
+  let n = nb_pierre_godel i in
+  let max = 6 in
+  assert(n >= 0 && n <= max);
+  ((u i) mod (2*n+1)) - n
+;;
+   
+let max_godel (nb_pierre : int) : int =
+  let max_pierre_plus_1 = 25 in
+  let rec calcul indice =
+    if indice = 1 then nb_pierre 
+    else (binom (nb_pierre + indice - 1) indice) + calcul (indice - 1)
+  in
+  let max_enc = calcul 7 in
+  nb_pierre + max_pierre_plus_1 * max_enc
+;;
+
+let valide godel =
+  (*Renvoie vrai si la position est valide*)
+  not (Array.exists (fun x -> x < 0) (godelVersConfig godel))
+;;
+
+type etat =
+  | Instable of int * int
+  | Stable of int
+;;
+
+let construit_bdd_pierre (p : int) (hsh : (int,etat) Hashtbl.t) (fonction_score : int -> int ) (stable : bool) : unit =
+  let max_god = max_godel p in
+  let nb = 25 in
+  let i = ref p in
+  while !i <= max_god do
+    let valeur =
+      if stable then
+        Stable(fonction_score !i)
+      else
+        Instable(-99999, -1)
+    in
+    Hashtbl.add hsh !i valeur;
+    i := !i + nb;
+  done;
+;;
+
+let construit_bdd () =
+  (*Renvoie la base de donnees des configuration de 0 a 6 pierres*)
+  let n = 6 in
+  let bdd = Array.init (n+1) (fun _ -> Hashtbl.create 64) in
+  Array.iteri (fun i a -> construit_bdd_pierre i a score_bdd true) bdd;
+  bdd
+;;
+
+  
+
+let initialisation (bdd : 'a array) =
+  let n = 7 in
+  let htbl = Hashtbl.create 64 in
+  construit_bdd_pierre n htbl (fun x -> -1) false;
+  let rempli_score god =
+    if not (jouable_joueur (godelVersConfig god)) then
+      (
+        let value = Stable(- (nb_pierre_godel god)) in
+        Hashtbl.replace htbl god value;
+      )
+    else
+      (
+        let config = godelVersConfig god in
+        let puits_jouables = puits_jouables_joueur config in
+        let copy_coup (c : configuration) (p : int) : int * configuration =
+          let copy = Array.copy c in
+          (coup copy p, copy)
+        in
+        let recolte_et_suivant = List.map (fun p -> copy_coup config p) puits_jouables in
+        let nb_coup_possible = List.length recolte_et_suivant in
+        let recolte = List.filter (fun (x,y) -> x > 0) recolte_et_suivant in
+        let k = List.length recolte in
+        let chercher_score (recolte,c) : int =
+          match Hashtbl.find bdd.(n - recolte) (godel c) with
+          | Stable(s) -> recolte - s
+          | Instable _ -> failwith "Erreur dans <initialisation>\n"
+        in
+        let liste_score = List.map chercher_score recolte in
+        let inf = List.fold_left max (-9999) liste_score in
+        Hashtbl.replace htbl god (Instable(inf, nb_coup_possible - k));
+      )
+  in
+  Hashtbl.iter (fun x y -> rempli_score x) htbl;
+  htbl
+;;
+  
+let config_bug = godelVersConfig (w7 16);;
+let config_suivante_bug_2 =
+  let foo = Array.copy config_bug in
+  ignore (coup foo 3); foo
+;; (*Il faut que le score soit egale a -3*)
+let bdd = construit_bdd ();;
+let bdd_7 = initialisation bdd;;
+let score_1 = Hashtbl.find bdd_7 (w7 16);;

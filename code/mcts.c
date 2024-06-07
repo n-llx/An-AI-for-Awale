@@ -122,6 +122,7 @@ static void retropropagation(noeud* n, int joueur){
 }
 
 noeud* mcts_tree(position* pos){
+  int CONTRAINTE_MCTS = 1000;
   noeud* racine = creer_noeud(pos);
   for(int i = 0; i < CONTRAINTE_MCTS; i++){
     noeud* a_visiter = regle_arbre(racine);
@@ -189,10 +190,12 @@ int strategie_mcts(position* pos){
   return -1;
 }
 
-/*
-void test(){
-  position* pos = creer_position_fichier("grilles/grille0.txt", 1, 0, 0);
-  printf("%d\n", strategie_mcts(pos));
+
+void test_mcts(){
+  position* pos = creer_position_fichier("grilles/grille2.txt", 1, 0, 0);
+  noeud* racine = mcts_tree(pos);
+  affichage_arbre_2(racine);
+  printf("Done\n");
   return;
 }
-*/
+

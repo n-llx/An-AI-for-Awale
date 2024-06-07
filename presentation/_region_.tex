@@ -4,7 +4,11 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 
-% Définition de l'environnement pour la figure d'Awalé avec un nombre variable de paramètres pour les pierres
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usefonttheme[onlymath]{serif}
+
+
 
 \date[]{}
 \title[La recherche du meilleur coup.]{À la recherche du meilleur coup au jeu d'Awalé}
@@ -50,12 +54,15 @@
   \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{ressources/ancien_plateau_jeu.png}
-    \caption{Un ancien plateau de jeu decouvert au Kenya}
+    \caption{Un ancien plateau de jeu découvert au Kenya}
   \end{figure}
 \end{frame}
 
 
 \begin{frame}
+  \begin{block}{Problématique}
+    L'étude théorique du jeu d'Awalé permet-elle de toujours jouer le meilleur coup, ou l'utilisation d'algorithmes est-elle indispensable ?
+  \end{block}
   \frametitle{Vue d'ensemble}
   \tableofcontents
 \end{frame}
@@ -78,7 +85,7 @@
   \begin{minipage}[t]{0.49\linewidth}
     \begin{figure}
       \centering
-      \includegraphics[width=1.05\linewidth]{ressources/p_debut.pdf}
+      \includegraphics[width=1.05\linewidth]{ressources/p_debut.jpg}
       \caption{L'état du plateau au début de la partie}
     \end{figure}
     
@@ -86,26 +93,183 @@
   
 \end{frame}
 
+\begin{frame}
+  \frametitle{Déroulé d'une partie}
+  \begin{minipage}[b]{0.45\linewidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1\linewidth]{ressources/diagramme1.png}
+      \caption{2 coups joués par les 2 joueurs en début de partie}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\linewidth}    
+    \begin{figure}
+      \centering
+      \includegraphics[width=1\linewidth]{ressources/diagramme2.png}
+      \caption{Position où le joueur 1 capture les pierres du joueur 2}
+    \end{figure}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Motivations}
+  \begin{itemize}
+  \item Le facteur d'embrachement est assez faible.
+  \item Possibilité d'utiliser des algorithmes classiques de la théorie des jeux pour trouver le coup optimal
+  \item Il y a moins de $10^{14}$ états possibles.
+  \end{itemize}
+\end{frame}
+
 \section{Échec de l'approche théorique et des premiers algorithmes}
 \begin{frame}
   \frametitle{Une approche théorique}
-  
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{ressources/determined_positions.png}
+    \caption{Un position déterminée}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{L'algorithme min-max}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{ressources/explication_min_max.png}
+    \caption{Un exemple de min max au jeu du morpion}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Problème du min-max classique}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{ressources/min_max_heuristique.png}
+    \caption{Un exemple de min max avec heuristique}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Résultat min-max}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{ressources/resultat_min_max.png}
+    \caption{Résultats de l'algorithme min-max (1000 parties)}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Un algorithme de Monte Carlo}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{ressources/monte_carlo_explication.png}
+    \caption{Principe de l'algorithme de Monte Carlo}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Des résultats peu convaincants}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{ressources/resultat_flat_monte_carlo.png}
+    \caption{Résultat de l'algorithme flat Monte Carlo (1000 parties)}
+  \end{figure}
 \end{frame}
 
 \section{Des résultats concluents grâce à deux nouvelles techniques : la recherche arborescente de Monte-Carlo et l'analyse rétrograde}
 \begin{frame}
-  \frametitle{Un problème bien connu}
-  
+  \frametitle{Une amélioration de l'algorithme précédent}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{ressources/monte_carlo_explication.png}
+    \caption{Principe de la recherche arborescente de Monte Carlo}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comment choisir le noeud à explorer ?}
+  \begin{block}{Score d'un noeud}
+On attribue à chaque noeud $n$ un score $Q$ qui correspond à la moyenne des gains remportés part toutes les parties contenant le noeud $n$. Étant donné un noeud $n$ et son père $p$, on a :
+$$ Q(n) = \frac 1 {N(n)} \sum_{i=1}^{N(p)}\mathbb I_i(n)z_i $$
+où $N(n)$ représente le nombre de visites du noeud $n$, $z_i$ est le gain lors de la ième visite de noeud $n$ et $\mathbb I_i(n)$ vaut $1$ si le noeud $n$ a ete choisie à la $i$ visite par $p$, 0 sinon
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comment choisir le noeud à explorer (2) ?}
+  \begin{block}{Meilleur fils d'un noeud $n$}
+    $$\underset{n' \in \text{ enfants de } n}{\arg\max} \frac {Q(n')} {N(n')} + c\sqrt{\frac {2ln(N(n))} {N(n')} }$$
+  \end{block}
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Visualisation des arbres}
+   \begin{figure}
+     \centering
+     \includegraphics[width=\linewidth]{ressources/arbre_40_flat.pdf}
+     \caption{Un arbre de recherche pour le flat Monte Carlo}
+   \end{figure}
+\end{frame}
 
+\begin{frame}
+  \frametitle{Visualisation des arbres}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{ressources/arbre_40_mcts.pdf}
+    \caption{Un arbre de recherche pour la recherche arborescente de Monte Carlo}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Résultats de la recherche arborescente de Monte Carlo}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{ressources/resultat_mcts.png}
+    \caption{Résultats de la recherche arborescente de Monte Carlo}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Un nouveau paradigme : l'analyse rétrograde}
+  \begin{itemize}
+  \item Utilisation de la programmation dynamique
+  \end{itemize}
+  \begin{block}{Anti-coups}
+    Étant donné une configuration à $n$ pierres $A$, on dit que $A'$ est obtenue par anti-coup depuis la configuration $A$ si il existe un coup jouable dans $A'$ menant à la configuration $A$ sans récolte
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Explication de l'analyse rétrograde}
+  L'algorithme se déroule en 3 étapes :
+  \begin{itemize}
+  \item Initialisation
+  \item Convergence
+  \item Stabilisation
+  \end{itemize}
+  Mais comment stocker toutes ses positions ?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Codage de Gödel}
+  \begin{block}{Vecteur $\vec c$}
+    Étant donné une configuration $A$, on note $A(i)$ le nombre de pierre dans le puit $i$. On pose $\vec c = (c_0, ..., c_{11})$ où $c_0 = A(0)$ et $c_{k+1}=A(k+1) + 1 + c_k$
+  \end{block}
+  \begin{block}{Codage de Gödel }
+    On note, $$enc(\vec c) = \sum_{i=1}^{12} \binom {c_{i-1}} {i}$$
+    Et on appelle nombre de Gödel de $A$ la quantité
+    $$\mathcal E(A) = n + 25 \times enc(\vec c)$$ où $n$ est le nombre de pierres de $A$
+  \end{block}
+  Base de donnée construite pour $n = 29$
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusion}
+\end{frame}
+  
 
 \end{document}
 
-%%% Local Variables:
-%%% mode: LaTeX
-%%% TeX-master: t
-%%% End:
-
-\message{ !name(test.tex) !offset(-111) }
+\message{ !name(test.tex) !offset(-275) }

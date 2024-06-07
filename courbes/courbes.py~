@@ -1,0 +1,12 @@
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [0.892, 0.974, 0.987, 1, 1]
+
+plt.figure(figsize=(8, 6))
+plt.plot(x, y, 'o-')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Valeurs de x en fonction de y')
+plt.grid()
+plt.show()

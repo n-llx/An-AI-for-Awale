@@ -318,8 +318,9 @@ let godel (c : configuration) : int =
 let retourne (c : configuration) : configuration =
   let cpy = Array.copy c in
   for i = 0 to 7 do
-    c.(i) <- cpy.((i + 4) mod 8)
+    cpy.(i) <- c.((i + 4) mod 8)
   done;
+  cpy
 ;;
 
 let question8 () =
@@ -329,10 +330,7 @@ let question8 () =
   let c1 = godelVersConfig w7_30 in
   let c2 = godelVersConfig w24_31 in
   let c3 = godelVersConfig w24_32 in
-  retourne c1;
-  retourne c2;
-  retourne c3;
-  Printf.printf "Question 8 :\n1) %d\n2) %d\n3) %d\n" (godel c1) (godel c2) (godel c3)
+  Printf.printf "Question 8 :\n1) %d\n2) %d\n3) %d\n" (godel (retourne c1)) (godel (retourne c2)) (godel (retourne c3))
 ;;
 
 let coup_mene_recolte (c : configuration) (p : int) : bool =
@@ -473,7 +471,7 @@ let construit_bdd_pierre (p : int) (hsh : (int,etat) Hashtbl.t) (fonction_score 
       if stable then
         Stable(fonction_score !i)
       else
-        Instable(-99999, -1)
+        Instable(-999, -1)
     in
     Hashtbl.add hsh !i valeur;
     i := !i + nb;
@@ -497,7 +495,7 @@ let initialisation (bdd : 'a array) =
   let rempli_score god =
     if not (jouable_joueur (godelVersConfig god)) then
       (
-        let value = Stable(- (nb_pierre_godel god)) in
+        let value = Instable(- (nb_pierre_godel god), 0) in
         Hashtbl.replace htbl god value;
       )
     else
@@ -511,14 +509,15 @@ let initialisation (bdd : 'a array) =
         let recolte_et_suivant = List.map (fun p -> copy_coup config p) puits_jouables in
         let nb_coup_possible = List.length recolte_et_suivant in
         let recolte = List.filter (fun (x,y) -> x > 0) recolte_et_suivant in
-        let k = List.length recolte in
+        let position_et_pierre = List.map (fun (x,y) -> (x, retourne y)) recolte in
+        let k = List.length position_et_pierre in
         let chercher_score (recolte,c) : int =
           match Hashtbl.find bdd.(n - recolte) (godel c) with
           | Stable(s) -> recolte - s
           | Instable _ -> failwith "Erreur dans <initialisation>\n"
         in
-        let liste_score = List.map chercher_score recolte in
-        let inf = List.fold_left max (-9999) liste_score in
+        let liste_score = List.map chercher_score position_et_pierre in
+        let inf = List.fold_left max (-n) liste_score in
         Hashtbl.replace htbl god (Instable(inf, nb_coup_possible - k));
       )
   in
@@ -526,11 +525,21 @@ let initialisation (bdd : 'a array) =
   htbl
 ;;
   
-let config_bug = godelVersConfig (w7 16);;
-let config_suivante_bug_2 =
-  let foo = Array.copy config_bug in
-  ignore (coup foo 3); foo
-;; (*Il faut que le score soit egale a -3*)
-let bdd = construit_bdd ();;
-let bdd_7 = initialisation bdd;;
-let score_1 = Hashtbl.find bdd_7 (w7 16);;
+let question10 () =
+  let bdd = construit_bdd () in
+  let bdd_7 = initialisation bdd in
+  for i = 0 to 4 do
+    let get_score_et_rest (e : etat) =
+      match e with
+      | Stable _ -> failwith "Erreur";
+      | Instable(t,k) -> (t,k)
+    in
+    let couple = ref (-1,-1) in
+    let l = ref 0 in
+    while snd !couple <> i do
+      incr l;
+      couple := get_score_et_rest (Hashtbl.find bdd_7 (w7 !l));
+    done;
+    Printf.printf "(%d, %d)\n" (!l) (fst !couple)
+  done;
+;;

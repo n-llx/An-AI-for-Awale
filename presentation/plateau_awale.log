@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.6.1)  5 JUN 2024 08:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.6.1)  8 JUN 2024 10:48
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -415,7 +415,7 @@ e
 Here is how much of TeX's memory you used:
  12079 strings out of 480806
  249113 string characters out of 5905152
- 519049 words of memory out of 6000000
+ 519050 words of memory out of 6000000
  29265 multiletter control sequences out of 15000+600000
  404028 words of font info for 29 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -423,7 +423,7 @@ Here is how much of TeX's memory you used:
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr8.pfb>
-Output written on plateau_awale.pdf (1 page, 18646 bytes).
+Output written on plateau_awale.pdf (1 page, 18881 bytes).
 PDF statistics:
  19 PDF objects out of 1000 (max. 8388607)
  13 compressed objects within 1 object stream

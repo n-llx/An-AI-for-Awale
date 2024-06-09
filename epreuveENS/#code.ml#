@@ -372,7 +372,6 @@ let liste_anti_coup_puit (c : configuration) (p : int) : configuration list=
           )
         else 
           if nouvelle_config.(supp_indice) >= 0 && !compteur < 50 then
-            (* Attention on majore a 50 coups *)
             (
               incr compteur;
               ancienne_config := nouvelle_config;

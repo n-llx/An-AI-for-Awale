@@ -1,0 +1,10 @@
+[1] : Implémentation du jeu pendant le mois de Septembre, en se focalisant sur la complexité des différentes fonctions en vue d'optimiser les performances.
+[2] : Premiere idée de résolution : utiliser l'algorithme min-max. Les résultats sont anormalement décevants en raison d'un bug que je mettrai un mois à trouver.
+[3] : Les recherches bibliographiques sur des propriétés théoriques pour la résolution ne sont pas concluantes. Je me focalise sur la recherche de nouveaux algorithmes.
+[4] : Après le cours sur les algorithmes probabilistes, je décide d'implémenter un algorithme de Monte-Carlo.
+[5] : Fin Janvier, j'ai l'opportunité d'échanger avec un joueur professionnel d'Awalé. Il accepte d'affronter mes robots. Il gagne toutes les parties.
+[6] : Recherches d'algorithmes plus performants et découverte de la recherche arborescente de Monte Carlo.
+[7] : En essayant de stocker les scores des configurations proches d'être terminale, je découvre l'analyse rétrograde début mars.
+
+
+Références bibliographiques

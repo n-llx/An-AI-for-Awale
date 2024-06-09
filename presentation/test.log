@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.6.1)  5 JUN 2024 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.6.1)  8 JUN 2024 16:36
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1167,16 +1167,22 @@ sed on input line 56.
 ) [10
 
  <./svg-inkscape/diagramme_min_max_svg-tex.pdf>]
-<ressources/min_max_heuristique.png, id=453, 346.29375pt x 200.75pt>
-File: ressources/min_max_heuristique.png Graphic file (type png)
-<use ressources/min_max_heuristique.png>
-Package pdftex.def Info: ressources/min_max_heuristique.png  used on input line
- 157.
-(pdftex.def)             Requested size: 273.83728pt x 158.75003pt.
- [11
+Package svg Info: Last page of `./svg-inkscape/diagramme_min_max_heuristique_sv
+g-tex.pdf' is 1 on input line 157.
 
- <./ressources/min_max_heuristique.png>]
-<ressources/resultat_min_max.png, id=481, 578.16pt x 433.62pt>
+(./svg-inkscape/diagramme_min_max_heuristique_svg-tex.pdf_tex
+<./svg-inkscape/diagramme_min_max_heuristique_svg-tex.pdf, id=454, page=1, 1883
+.16046pt x 423.83344pt>
+File: ./svg-inkscape/diagramme_min_max_heuristique_svg-tex.pdf Graphic file (ty
+pe pdf)
+<use ./svg-inkscape/diagramme_min_max_heuristique_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/diagramme_min_max_heuristique_svg-tex.p
+df , page1 used on input line 56.
+(pdftex.def)             Requested size: 342.2953pt x 77.03691pt.
+) [11
+
+ <./svg-inkscape/diagramme_min_max_heuristique_svg-tex.pdf>]
+<ressources/resultat_min_max.png, id=572, 578.16pt x 433.62pt>
 File: ressources/resultat_min_max.png Graphic file (type png)
 <use ressources/resultat_min_max.png>
 Package pdftex.def Info: ressources/resultat_min_max.png  used on input line 16
@@ -1189,7 +1195,7 @@ Overfull \vbox (0.56398pt too high) detected at line 166
 [12
 
  <./ressources/resultat_min_max.png>]
-<ressources/monte_carlo_explication.png, id=509, 696.6025pt x 309.155pt>
+<ressources/monte_carlo_explication.png, id=600, 696.6025pt x 309.155pt>
 File: ressources/monte_carlo_explication.png Graphic file (type png)
 <use ressources/monte_carlo_explication.png>
 Package pdftex.def Info: ressources/monte_carlo_explication.png  used on input 
@@ -1198,7 +1204,7 @@ line 175.
  [13
 
  <./ressources/monte_carlo_explication.png>]
-<ressources/resultat_flat_monte_carlo.png, id=538, 578.16pt x 433.62pt>
+<ressources/resultat_flat_monte_carlo.png, id=628, 578.16pt x 433.62pt>
 File: ressources/resultat_flat_monte_carlo.png Graphic file (type png)
 <use ressources/resultat_flat_monte_carlo.png>
 Package pdftex.def Info: ressources/resultat_flat_monte_carlo.png  used on inpu
@@ -1226,7 +1232,7 @@ line 194.
 
 pdfTeX warning: pdflatex (file ./ressources/arbre_40_flat.pdf): PDF inclusion: 
 found PDF version <1.7>, but at most version <1.5> allowed
-<ressources/arbre_40_flat.pdf, id=675, 1616.0375pt x 662.475pt>
+<ressources/arbre_40_flat.pdf, id=765, 1616.0375pt x 662.475pt>
 File: ressources/arbre_40_flat.pdf Graphic file (type pdf)
 <use ressources/arbre_40_flat.pdf>
 Package pdftex.def Info: ressources/arbre_40_flat.pdf  used on input line 220.
@@ -1237,7 +1243,7 @@ Package pdftex.def Info: ressources/arbre_40_flat.pdf  used on input line 220.
 
 pdfTeX warning: pdflatex (file ./ressources/arbre_40_mcts.pdf): PDF inclusion: 
 found PDF version <1.7>, but at most version <1.5> allowed
-<ressources/arbre_40_mcts.pdf, id=710, 3461.93375pt x 662.475pt>
+<ressources/arbre_40_mcts.pdf, id=801, 3461.93375pt x 662.475pt>
 File: ressources/arbre_40_mcts.pdf Graphic file (type pdf)
 <use ressources/arbre_40_mcts.pdf>
 Package pdftex.def Info: ressources/arbre_40_mcts.pdf  used on input line 229.
@@ -1245,7 +1251,7 @@ Package pdftex.def Info: ressources/arbre_40_mcts.pdf  used on input line 229.
 [19
 
  <./ressources/arbre_40_mcts.pdf>]
-<ressources/resultat_mcts.png, id=746, 578.16pt x 433.62pt>
+<ressources/resultat_mcts.png, id=837, 578.16pt x 433.62pt>
 File: ressources/resultat_mcts.png Graphic file (type png)
 <use ressources/resultat_mcts.png>
 Package pdftex.def Info: ressources/resultat_mcts.png  used on input line 238.
@@ -1272,8 +1278,8 @@ Overfull \vbox (4.68541pt too high) detected at line 272
 Package svg Info: Last page of `./svg-inkscape/diagramme_stars_and_bars_svg-tex
 .pdf' is 1 on input line 292.
  (./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf_tex
-<./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf, id=918, page=1, 502.12593
-pt x 67.75313pt>
+<./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf, id=1008, page=1, 502.1259
+3pt x 67.75313pt>
 File: ./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf Graphic file (type pd
 f)
 <use ./svg-inkscape/diagramme_stars_and_bars_svg-tex.pdf, page 1>
@@ -1301,10 +1307,10 @@ Package rerunfilecheck Info: File `test.out' has not changed.
 (rerunfilecheck)             Checksum: 5447A14BE711907B49B74011F500E121;1375.
  ) 
 Here is how much of TeX's memory you used:
- 25294 strings out of 480806
- 488505 string characters out of 5905152
- 785299 words of memory out of 6000000
- 42006 multiletter control sequences out of 15000+600000
+ 25301 strings out of 480806
+ 489069 string characters out of 5905152
+ 785303 words of memory out of 6000000
+ 42010 multiletter control sequences out of 15000+600000
  454430 words of font info for 104 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  128i,15n,126p,768b,730s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1321,10 +1327,10 @@ sy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 </usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on test.pdf (25 pages, 3171809 bytes).
+Output written on test.pdf (25 pages, 3243720 bytes).
 PDF statistics:
- 1018 PDF objects out of 1200 (max. 8388607)
- 835 compressed objects within 9 object streams
+ 1108 PDF objects out of 1200 (max. 8388607)
+ 881 compressed objects within 9 object streams
  57 named destinations out of 1000 (max. 500000)
- 504 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 509 words of extra memory for PDF output out of 10000 (max. 10000000)
 
